@@ -18,34 +18,35 @@
         <label for="password">Password</label><input id="password" type="password" autocomplete="current-password" maxlength="128" required>
         <button type="submit">Sign in</button>
       </form>
-      <p class="small">Create your account using the setup instructions in README.md.</p>
+      <p class="small">Create your account using the setup instructions in START_HERE.md.</p>
     </section>
     <section id="workspace" hidden>
-      <div class="workspace-bar"><p id="mode">Travel itineraries &amp; estimated budgets</p><button id="logout" class="secondary">Sign out</button></div>
-      <p id="privacy" class="notice">Your chat stays in this app's memory until you clear it, sign out, or your session expires. Validated trip details are sent to Google Gemini to arrange activities. Avoid personal or secret information.</p>
+      <div class="workspace-bar"><p id="mode">Live AI travel planning</p><button id="logout" class="secondary">Sign out</button></div>
+      <p class="notice">Plan and refine a trip in your own words. I can help with destinations, hotels, food, transport, and budgets; please keep requests related to your itinerary.</p>
       <div class="layout">
         <aside class="card">
-          <p class="eyebrow">START WITH THE ESSENTIALS</p><h2>Build your trip</h2>
+          <p class="eyebrow">OPTIONAL STARTING POINT</p><h2>Build your trip</h2>
           <form id="trip-form">
-            <label for="destination">Destination</label><select id="destination" required></select>
-            <div class="pair"><div><label for="days">Days</label><input id="days" type="number" min="1" max="7" value="3" required></div><div><label for="travelers">Adults</label><input id="travelers" type="number" min="1" max="6" value="1" required></div></div>
-            <label for="budget">Total group budget (₹)</label><input id="budget" type="number" min="100" max="1000000" step="1" value="15000" required>
-            <label for="stay">Accommodation</label><select id="stay"><option value="economy">Economy</option><option value="standard">Standard</option></select>
-            <fieldset><legend>What do you enjoy?</legend><div id="interests" class="interests"></div></fieldset>
+            <label for="destination">Destination or route</label><input id="destination" placeholder="Any city, country, or route" maxlength="120" required>
+            <div class="pair"><div><label for="days">Days</label><input id="days" type="number" min="1" step="1" required></div><div><label for="travelers">Travelers</label><input id="travelers" type="number" min="1" step="1" required></div></div>
+            <div class="pair"><div><label for="budget">Total budget (optional)</label><input id="budget" type="number" min="0.01" step="any"></div><div><label for="currency">Currency</label><input id="currency" value="INR" pattern="[A-Z]{3}" maxlength="3" required></div></div>
+            <label for="interests">Interests</label><input id="interests" placeholder="What would you enjoy?" maxlength="500">
+            <label for="accommodation">Accommodation preference</label><input id="accommodation" placeholder="e.g. a 4-star hotel near the centre" maxlength="200">
+            <label for="notes">Other trip preferences</label><textarea id="notes" rows="2" maxlength="1000" placeholder="Pace, dates, accessibility, or family needs"></textarea>
             <button type="submit">Create my itinerary</button>
           </form>
-          <p class="small">1–7 days · up to 6 adults · six supported destinations. Estimates exclude travel to/from the city and shopping.</p>
+          <p class="small">You can also describe the whole trip in chat. Estimates and hotel ratings need checking before booking.</p>
         </aside>
         <section class="card conversation">
           <div class="conversation-title"><div><p class="eyebrow">MAKE IT YOURS</p><h2>Your travel workspace</h2></div><div class="actions"><button id="export" class="secondary">Save chat</button><button id="clear" class="secondary">Clear chat</button></div></div>
-          <div id="messages" aria-live="polite"><p class="empty">Your itinerary will appear here. Use the form to get started.</p></div>
-          <form id="chat-form"><label for="message">Travel request or revision</label><div class="compose"><textarea id="message" rows="2" maxlength="1000" placeholder="Try: make it 2 days" required></textarea><button type="submit">Send</button></div></form>
-          <details><summary>Which requests can I use?</summary><p>Plan a 3-day trip to Jaipur with a budget of ₹15000. I like history and local food.</p><p>Revisions: make it 2 days · set budget to 10000 · interests: history and food · destination: Udaipur · travelers: 2 · stay: standard</p><p>Weather, distances, office questions, and unrelated requests are outside this planner's scope. Use the form for anything the chat grammar cannot understand.</p></details>
+          <div id="messages" aria-live="polite"></div>
+          <form id="chat-form"><label for="message">Tell me about your trip</label><div class="compose"><textarea id="message" rows="3" maxlength="4000" placeholder="Describe a new trip or ask me to change your itinerary" required></textarea><button type="submit">Send</button></div></form>
+          <details><summary>About your private workspace</summary><p>Your messages and recent accepted travel conversation are sent to Google Gemini for scope checks and planning. Do not include passwords, API keys, or personal identity details.</p><p>Chat is temporary: clear it, sign out, or let the session expire to remove it from this app. Exported files remain on your computer.</p><p>This agent suggests plans and estimates. It does not check live availability or make bookings.</p></details>
         </section>
       </div>
     </section>
     <p id="status" role="status" class="status"></p>
   </main>
-  <footer>A learning project built with Google ADK. Review estimates and opening days before traveling.</footer>
+  <footer>A learning project built with Google ADK. Verify prices, opening days, and accommodation details before traveling.</footer>
 </body>
 </html>
