@@ -1,73 +1,71 @@
 # Security boundary
 
-## What the app protects
+This is an authenticated, loopback-only learning app. It is not an internet
+deployment or a guarantee of zero data leaks.
 
-The supported launcher binds to `127.0.0.1:8001`. Separate accounts and opaque
-browser cookies prevent an ordinary user from retrieving another login's chat
-through the supported API. The server chooses the account identity; the browser
-cannot provide a user ID or session ID. There is no chat-list or debug endpoint.
+## Account and chat isolation
 
-Password hashes use scrypt (N=32768, r=8, p=3) with a unique 16-byte salt.
-Passwords are never stored in plaintext. Login cookies use 256-bit random tokens,
-HttpOnly, SameSite=Strict, and a 30-minute maximum age. Only their SHA-256 digests
-are held server-side. Mutations require the matching session's CSRF token and
-same local origin. An expired cookie cannot read data even if a page is still open.
+The server binds to `127.0.0.1:8001`. Scrypt password hashes have unique salts.
+Random opaque cookies are HttpOnly/SameSite=Strict and stored server-side as
+SHA-256 digests. The server selects the account identity; request bodies and
+query strings cannot select another user's conversation. Each login has a
+separate in-memory history and matching CSRF token. Host and origin checks
+reject cross-site requests; API/debug/chat-list endpoints are not exposed.
 
-Session history is memory-only, at most 24 messages per login. Inactive sessions
-expire after 15 minutes; absolute expiry is 30 minutes. Expired data is swept on
-requests and every 30 seconds. Sign-out revokes the cookie and removes the chat.
-Each ADK generation uses a fresh session which is deleted afterwards. Clear-chat
-waits for an active generation, then discards the completed history and trip.
+History is capped at 24 messages, expires after 15 minutes idle / 30 minutes
+absolute, and is swept every 30 seconds. Clear-chat removes the history after
+any active generation. Logout revokes the session immediately, so late model
+results cannot restore a logged-out chat. An ADK session is created for each
+generation and deleted afterwards. Only up to 12 accepted recent messages from
+the current login are sent as model context. Refused raw messages are not saved
+or added to the planner's accepted context.
 
-## How scope and data minimization work
+## Guardrails
 
-The chat grammar is an allowlist of documented trip requests and revisions.
-Weather, distance, office queries, unrelated wording, known injection phrases,
-links, and recognizable secret/contact patterns are rejected locally. The API
-also accepts a form with enumerated cities/interests, bounded integers, and no
-extra fields. No original user message or username is included in a model request.
+Local checks catch recognizable keys, contact details, identity numbers, and
+obvious instruction attacks. A Gemini intent check allows natural itinerary
+requests, any destination and hotel preference, and relevant follow-up questions.
+The main ADK agent has travel-only instructions and a response schema. Its reply
+is checked for recognizable secrets, schema validity, and itinerary scope before
+display. Model thoughts are removed. Extra JSON fields are rejected locally,
+even when the transport schema omits unsupported schema keywords for compatibility.
 
-Gemini receives only validated trip fields and the selected city's catalog.
-Its allowed response is day numbers and activity IDs. The app verifies the exact
-day count, order, IDs, duplicate stops, requested food, and daytime historical
-visits. Extra fields and invalid answers fail closed. Visible itinerary words
-come from code/catalog, not arbitrary model prose. Budgets are calculated in
-Python. The browser inserts text using `textContent`, never `innerHTML`.
+Scope/secret detection is best effort and can make mistakes. The app does not
+claim to detect every prompt injection or all PII. Semantic checks depend on the
+configured model; a failed check does not disable the guardrail or select an
+offline fallback. No model tool can read accounts, other chats, files, shell,
+browser contents, or booking systems. Privacy access control is independent of
+model decisions and enforced by the API/session store.
 
-The agent has no file, shell, browser, retrieval, booking, or account tools.
-The supported launcher suppresses SDK payload logs and does not configure tracing
-or an external telemetry exporter. Structured output and callbacks complement
-the prompt; they do not rely on a prompt alone for access control.
+## Data sent outside the computer
 
-## Resource limits
+Messages that pass the local checks, and recent accepted travel context, are
+sent to Google Gemini for intent checking and itinerary generation. The generated
+answer is also sent to Gemini for output review. An off-topic message may be sent
+to the intent checker even when the planner refuses it. Free text allows richer
+planning but may contain details the heuristics do not recognize; do not enter
+personal secrets or sensitive information. Google processing/retention is outside
+this app's control. There is no app tracing or payload logging in the supported
+launcher. Private chat exports remain ordinary files on your computer.
 
-- 8192 request bytes, checked before JSON parsing; 1000 chat characters.
-- At most 100 active browser sessions; 24 messages each.
-- 120 API requests per client/minute; 10 sign-in attempts per client/minute
-  and 5 per username/minute.
-- 10 chat/form requests per account/minute; 30 planning attempts/hour.
-- Three concurrent generations; bounded wait, call count, retries, and timeout.
-- Provider errors and invalid responses do not create a saved itinerary.
+## Other controls and limits
 
-## What this cannot protect against
+- 8192 request bytes, 4000 chat characters; bounded schema string lengths.
+- 100 active login sessions; 120 API requests/client/minute.
+- Login: 10 attempts/client/minute, 5 per username/minute.
+- Chat: 10 requests/account/minute and 30 AI attempts/account/hour.
+- Three simultaneous AI tasks; bounded call counts, retries, and timeouts.
+- Model-generated prices are estimates; Python sums cost categories exactly.
+- All model text is inserted as text nodes, never HTML. No browser chat storage.
+- Generic error messages exclude SDK payloads, keys, prompts, and account details.
 
-- Someone controlling the computer, OS account, browser profile, or process memory.
-- Someone using an unlocked signed-in browser or stealing an active cookie.
-- Private exported files, screenshots, browser history, OS backups, or Google-side
-  processing/retention. No secure deletion from RAM, swap, or backups is claimed.
-- A full DLP detector: input regexes are heuristic. Safety comes chiefly from
-  accepting only bounded fields and never forwarding arbitrary user text.
-- Accurate live opening times, prices, weather, or routing. The small catalog
-  and sample costs are educational assumptions.
-- Distributed rate limiting, internet deployment, or a multi-process server.
+Someone controlling the OS account, process, browser profile, or an unlocked
+signed-in browser can access local data. Windows files inherit OS folder ACLs;
+Unix file modes do not configure Windows ACLs. HTTP cookies lack Secure only
+because this app is loopback-only. An internet deployment requires HTTPS/Secure
+cookies, managed authentication, shared stores, privacy review, and security
+testing. Do not expose this prototype by changing its host to `0.0.0.0`.
 
-On Windows, `.private` and `.env` inherit the folder's OS permissions; Python's
-Unix file mode does not create Windows ACLs. Keep them in your private user folder.
-HTTP cookies intentionally lack `Secure` on this loopback-only app. An internet
-deployment needs HTTPS, Secure cookies, managed authentication, least-privilege
-secret storage, shared session/rate-limit storage, privacy review, and security
-testing before exposure. Do not change the host to `0.0.0.0` for this prototype.
-
-Use `server.py`, not `adk web`, for private chat. Developer tooling can expose
-raw events and is outside this boundary. Keep keys out of screenshots and ZIPs;
-revoke any key already exposed.
+Keep `.env`, `.private`, `.venv`, `.adk`, caches, and private exports out of GitHub.
+Use the authenticated launcher; `adk web` is a developer interface outside this
+security boundary. Revoke any previously exposed API key.

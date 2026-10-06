@@ -1,52 +1,40 @@
-# Validation — 6 October 2026
+# Validation — live Gemini upgrade
 
-## Result
+Date: 6 October 2026. Python 3.14 / google-adk 2.11.0 / google-genai 2.28.0.
 
-**83 automated tests passed** on Windows / Python 3.14.5.
-The final browser JavaScript passed Node's syntax check.
-The local browser was tested with a disposable offline-practice account:
-sign-in, itinerary generation, budget display, and weather refusal worked.
-Screenshots of that actual local interface are included and labeled offline.
+## Automated checks
 
-## Important checks
+54 tests passed. These exercise real ADK Runner callbacks using model doubles,
+portable Gemini response schemas, unrestricted destinations, hotel follow-ups,
+variable budget arithmetic, private input checks, output review, two-account and
+separate-login isolation, CSRF, origin/Host validation, expiry, logout during a
+generation, error handling, and rate limits. SDK deprecation warnings were present.
+The model doubles are test fixtures only; the app has no offline planner.
 
-| Check | Result |
-|---|---|
-| Two distinct accounts receive separate chats | Passed |
-| Two browser logins to the same account start separate conversations | Passed |
-| Unauthenticated history and planning calls | Rejected |
-| Client-supplied user ID and session query parameters | Rejected |
-| Missing or another session's CSRF token | Rejected |
-| Foreign origin / foreign Host header | Rejected |
-| Weather, office-distance, unrelated and known injection requests | Rejected before any provider call |
-| Recognizable email, phone, key or passport content | Rejected; original message not retained |
-| Invalid trip values, extra fields and oversized requests | Rejected |
-| Real ADK Runner executes input/output callbacks | Passed using a local model double |
-| Invalid model response / extra private output | Blocked |
-| Output day count and catalog activity validation | Passed |
-| Budget totals, group room count, reserve and low-budget handling | Passed |
-| Session expiry, clear chat and revoked cookie reuse | Passed |
-| Logout while generation is running | Late result discarded |
-| Failed login and request rate limits | Passed |
-| Provider failure | Generic error; no saved plan or provider payload |
-| Developer, secret-file and unapproved static routes | Unavailable |
+## Real Gemini checks
 
-## Dependency check
+The configured `gemini-3.5-flash-lite` model was called using a locally configured
+key that is not included in the repository. Synthetic requests tested:
 
-`pip-audit` checked the 48 installed runtime packages listed in
-`requirements-lock.txt` against its PyPI advisory service on the validation date.
-**No known vulnerabilities were reported for those versions.** This is a known
-advisory scan, not a guarantee that all dependencies are free of vulnerabilities.
-The scan did not include the optional test tools. It can become outdated.
+- Jaipur: three days, INR 15,000, history and food — detailed itinerary returned.
+- Follow-up: add a 4-star hotel, retain original budget, explain tradeoffs — answered.
+- Kyoto and Osaka: ten days, two adults, JPY budget — itinerary returned.
+- Paris: four days, family of three, vegetarian food, EUR budget — itinerary returned.
+- Standalone weather, office commute, and programming requests — refused.
 
-## Limits of this evidence
+The tests used independent temporary sessions and synthetic travel requests,
+not anyone's existing chat. Source schemas were adapted to portable Gemini wire
+fields; strict local response validation remains in place.
 
-No authenticated live Gemini call was made for this upgraded build. ADK behavior
-was tested with the actual installed ADK Runner and a deterministic local model
-double. Offline screenshots do not demonstrate Gemini connectivity, output
-quality, quota, or availability. Verify these with your own new API key.
+## Evidence and limits
 
-This is an application test suite, not an independent penetration test or a
-production security certification. Some SDK dependencies emitted deprecation
-warnings (Python typing and Starlette's httpx test adapter); they did not fail
-the tests. Review `SECURITY.md` before considering deployment outside loopback.
+`example_conversations.txt` contains the recorded live synthetic conversations.
+Screenshots identify the live model. Browser preview uses a disposable test
+account on loopback port 8003; the normal launcher uses 8001. No key, password,
+account store, or private export is submitted.
+
+Scope classification is model-dependent and can make mistakes. These checks do
+not prove every jailbreak will be stopped or every personal detail will be
+detected. Server-enforced account isolation is independent of the model.
+Hotel ratings, rates, opening times, and availability were not live-verified.
+Generated budgets are estimates, summed in Python; no purchases or bookings occur.

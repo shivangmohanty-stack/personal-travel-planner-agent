@@ -13,10 +13,9 @@ from pydantic import BaseModel, ConfigDict, Field
 from starlette.concurrency import run_in_threadpool
 
 from security import COOKIE, USER_FILE, RateLimiter, SessionStore, verify_user
-from travel_planner.catalog import INTERESTS, PLACES
 from travel_planner.engine import Planner, PlanningUnavailable
-from travel_planner.guardrails import TripSpec, parse_message
-from travel_planner.planning import estimate_budget, render_plan
+from travel_planner.engine import format_reply
+from travel_planner.guardrails import TripForm, inspect_message
 
 BASE = Path(__file__).resolve().parent
 ORIGINS = {"http://127.0.0.1:8001", "http://localhost:8001"}
@@ -116,7 +115,7 @@ class LoginBody(BaseModel):
 
 class ChatBody(BaseModel):
     model_config = ConfigDict(extra="forbid")
-    message: str = Field(min_length=1, max_length=1000)
+    message: str = Field(min_length=1, max_length=4000)
 
 
 def create_app(planner=None, users_path=USER_FILE, store=None):
@@ -149,7 +148,7 @@ def create_app(planner=None, users_path=USER_FILE, store=None):
     @app.exception_handler(RequestValidationError)
     async def validation_error(request, error):
         # FastAPI's default includes submitted values; never echo them.
-        return JSONResponse({"detail": "Invalid fields. Use the trip form and listed limits."}, status_code=422)
+        return JSONResponse({"detail": "Check the form values or shorten your message."}, status_code=422)
 
     @app.exception_handler(Exception)
     async def internal_error(request, error):
@@ -207,8 +206,7 @@ def create_app(planner=None, users_path=USER_FILE, store=None):
     @app.get("/api/me")
     async def me(request: Request):
         session = authenticated(request)
-        return dict(csrf=session.csrf, demo=bool(app.state.planner.demo),
-                    destinations=list(PLACES), interests=list(INTERESTS),
+        return dict(csrf=session.csrf, model=app.state.planner.model,
                     expires_in=max(0, int(1800 - (app.state.store.clock() - session.created))))
 
     @app.get("/api/history")
@@ -217,7 +215,7 @@ def create_app(planner=None, users_path=USER_FILE, store=None):
         async with session.lock:
             if session.revoked:
                 raise HTTPException(401, "Please sign in again.")
-            return dict(messages=list(session.messages), trip=session.trip.model_dump() if session.trip else None)
+            return dict(messages=list(session.messages))
 
     @app.post("/api/logout")
     async def logout(request: Request):
@@ -238,19 +236,15 @@ def create_app(planner=None, users_path=USER_FILE, store=None):
             session.messages.clear()
         return dict(ok=True)
 
-    async def process(trip, reply, session):
-        if reply:
-            session.messages.append(dict(role="assistant", text=reply))
+    async def process(message, session):
+        def save_refusal(text):
+            session.messages.append(dict(role="assistant", text=text, accepted=False))
             session.messages[:] = session.messages[-24:]
-            return dict(messages=list(session.messages), trip=session.trip.model_dump() if session.trip else None)
-        budget = estimate_budget(trip)
-        if not budget["feasible"]:
-            text = (f"This trip needs an estimated ₹{budget['total']:,} including reserve, "
-                    f"which is ₹{-budget['remaining']:,} over your budget. "
-                    "Try fewer days, fewer travelers, economy accommodation, or a larger budget.")
-            session.messages.append(dict(role="assistant", text=text))
-            session.messages[:] = session.messages[-24:]
-            return dict(messages=list(session.messages), trip=session.trip.model_dump() if session.trip else None)
+            return dict(messages=list(session.messages))
+        if blocked := inspect_message(message):
+            return save_refusal(blocked)
+        context = [dict(role=m["role"], text=m["text"])
+                   for m in session.messages if m.get("accepted")][-12:]
         if not app.state.limiter.allow(("model", session.user_id), 30, 3600):
             raise HTTPException(429, "Planning limit reached. Try again in an hour.")
         try:
@@ -258,22 +252,22 @@ def create_app(planner=None, users_path=USER_FILE, store=None):
         except TimeoutError:
             raise HTTPException(503, "The planner is busy. Try again shortly.") from None
         try:
-            async with asyncio.timeout(50):
-                choice, source = await app.state.planner.choose(trip, session.user_id)
-                plan = render_plan(trip, choice, source)
+            async with asyncio.timeout(105):
+                reply = await app.state.planner.reply(message, context, session.user_id)
+                text = format_reply(reply)
         except (PlanningUnavailable, TimeoutError, ValueError):
-            raise HTTPException(503, "Gemini is unavailable or its answer failed validation. Wait and try again. No plan was saved.") from None
+            raise HTTPException(503, "The AI model could not complete this request. Check your API key/model/quota or try again shortly. No answer was saved.") from None
         finally:
             app.state.model_slots.release()
         app.state.store.prune()
         if session.revoked:
             raise HTTPException(401, "Your session ended. Please sign in again.")
-        session.trip = trip
-        summary = (f"{trip.destination} · {trip.days} days · ₹{trip.budget:,} total · "
-                   f"{trip.travelers} traveler(s) · {', '.join(trip.interests)} · {trip.stay}")
-        session.messages.extend([dict(role="user", text=summary), dict(role="assistant", plan=plan)])
+        if reply.status == "refusal":
+            return save_refusal(text)
+        session.messages.extend([dict(role="user", text=message, accepted=True),
+                                 dict(role="assistant", text=text, accepted=True)])
         session.messages[:] = session.messages[-24:]
-        return dict(messages=list(session.messages), trip=trip.model_dump())
+        return dict(messages=list(session.messages))
 
     async def writable_session(request):
         session = authenticated(request, write=True)
@@ -282,12 +276,12 @@ def create_app(planner=None, users_path=USER_FILE, store=None):
         return session
 
     @app.post("/api/plan")
-    async def plan(body: TripSpec, request: Request):
+    async def plan(body: TripForm, request: Request):
         session = await writable_session(request)
         async with session.lock:
             if session.revoked:
                 raise HTTPException(401, "Please sign in again.")
-            return await process(body, None, session)
+            return await process(body.message(), session)
 
     @app.post("/api/chat")
     async def chat(body: ChatBody, request: Request):
@@ -295,8 +289,7 @@ def create_app(planner=None, users_path=USER_FILE, store=None):
         async with session.lock:
             if session.revoked:
                 raise HTTPException(401, "Please sign in again.")
-            trip, reply = parse_message(body.message, session.trip)
-            return await process(trip, reply, session)
+            return await process(body.message, session)
 
     return app
 
@@ -308,14 +301,16 @@ if __name__ == "__main__":
     from security import read_users
 
     load_dotenv(BASE / "travel_planner" / ".env", override=False)
-    demo = os.getenv("TRAVEL_DEMO_MODE", "FALSE").upper() == "TRUE"
     if not read_users():
         raise SystemExit("Create an account first: .venv\\Scripts\\python.exe manage_users.py")
-    if not demo and not os.getenv("GOOGLE_API_KEY"):
+    key = os.getenv("GOOGLE_API_KEY", "").strip()
+    if not key or key.startswith("PASTE_"):
         raise SystemExit("Add GOOGLE_API_KEY to travel_planner/.env first. Keep the key private.")
+    if os.getenv("GOOGLE_GENAI_USE_VERTEXAI", "FALSE").upper() not in {"FALSE", "0"}:
+        raise SystemExit("Use GOOGLE_GENAI_USE_VERTEXAI=FALSE for this Gemini API project.")
     # Suppress SDK/application payload logs. The launcher does not install tracing.
     logging.disable(logging.CRITICAL)
     print("Travel Planner: http://127.0.0.1:8001")
-    print("Offline practice mode." if demo else "Gemini mode. Only validated trip fields are sent to Google.")
-    uvicorn.run(create_app(Planner(demo=demo)), host="127.0.0.1", port=8001,
+    print("Live Gemini mode: " + os.getenv("TRAVEL_MODEL", "gemini-3.5-flash-lite"))
+    uvicorn.run(create_app(), host="127.0.0.1", port=8001,
                 access_log=False, log_level="critical", server_header=False)
