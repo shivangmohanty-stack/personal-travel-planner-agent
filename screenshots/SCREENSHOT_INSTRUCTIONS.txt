@@ -1,0 +1,8 @@
+This version runs live Google ADK + Gemini. There is no offline application mode.
+
+Capture a successful itinerary, a hotel follow-up, and an unrelated-topic refusal.
+The page should show the actual configured Gemini model.
+Use Save chat for your three example conversations.
+Never include .env, .private/users.json, API keys, or passwords in screenshots.
+Automated model doubles are tests, not live Gemini evidence.
+Only screenshots explicitly marked live should be treated as live run evidence.
