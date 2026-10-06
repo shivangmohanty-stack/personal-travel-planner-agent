@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal Travel Planner</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <header><div class="brand">TP</div><div><p class="eyebrow">YOUR NEXT LITTLE ADVENTURE</p><h1>Personal Travel Planner</h1></div><span class="badge">Private local workspace</span></header>
+  <main>
+    <section id="login-panel" class="login card">
+      <p class="eyebrow">WELCOME BACK</p><h2>A plan worth looking forward to.</h2>
+      <p>Sign in to your own temporary travel workspace.</p>
+      <form id="login-form">
+        <label for="username">Username</label><input id="username" autocomplete="username" minlength="3" maxlength="32" required>
+        <label for="password">Password</label><input id="password" type="password" autocomplete="current-password" maxlength="128" required>
+        <button type="submit">Sign in</button>
+      </form>
+      <p class="small">Create your account using the setup instructions in README.md.</p>
+    </section>
+    <section id="workspace" hidden>
+      <div class="workspace-bar"><p id="mode">Travel itineraries &amp; estimated budgets</p><button id="logout" class="secondary">Sign out</button></div>
+      <p id="privacy" class="notice">Your chat stays in this app's memory until you clear it, sign out, or your session expires. Validated trip details are sent to Google Gemini to arrange activities. Avoid personal or secret information.</p>
+      <div class="layout">
+        <aside class="card">
+          <p class="eyebrow">START WITH THE ESSENTIALS</p><h2>Build your trip</h2>
+          <form id="trip-form">
+            <label for="destination">Destination</label><select id="destination" required></select>
+            <div class="pair"><div><label for="days">Days</label><input id="days" type="number" min="1" max="7" value="3" required></div><div><label for="travelers">Adults</label><input id="travelers" type="number" min="1" max="6" value="1" required></div></div>
+            <label for="budget">Total group budget (₹)</label><input id="budget" type="number" min="100" max="1000000" step="1" value="15000" required>
+            <label for="stay">Accommodation</label><select id="stay"><option value="economy">Economy</option><option value="standard">Standard</option></select>
+            <fieldset><legend>What do you enjoy?</legend><div id="interests" class="interests"></div></fieldset>
+            <button type="submit">Create my itinerary</button>
+          </form>
+          <p class="small">1–7 days · up to 6 adults · six supported destinations. Estimates exclude travel to/from the city and shopping.</p>
+        </aside>
+        <section class="card conversation">
+          <div class="conversation-title"><div><p class="eyebrow">MAKE IT YOURS</p><h2>Your travel workspace</h2></div><div class="actions"><button id="export" class="secondary">Save chat</button><button id="clear" class="secondary">Clear chat</button></div></div>
+          <div id="messages" aria-live="polite"><p class="empty">Your itinerary will appear here. Use the form to get started.</p></div>
+          <form id="chat-form"><label for="message">Travel request or revision</label><div class="compose"><textarea id="message" rows="2" maxlength="1000" placeholder="Try: make it 2 days" required></textarea><button type="submit">Send</button></div></form>
+          <details><summary>Which requests can I use?</summary><p>Plan a 3-day trip to Jaipur with a budget of ₹15000. I like history and local food.</p><p>Revisions: make it 2 days · set budget to 10000 · interests: history and food · destination: Udaipur · travelers: 2 · stay: standard</p><p>Weather, distances, office questions, and unrelated requests are outside this planner's scope. Use the form for anything the chat grammar cannot understand.</p></details>
+        </section>
+      </div>
+    </section>
+    <p id="status" role="status" class="status"></p>
+  </main>
+  <footer>A learning project built with Google ADK. Review estimates and opening days before traveling.</footer>
+</body>
+</html>
