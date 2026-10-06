@@ -1,0 +1,8 @@
+.venv/
+.env
+.private/
+.adk/
+__pycache__/
+*.pyc
+.pytest_cache/
+.coverage
