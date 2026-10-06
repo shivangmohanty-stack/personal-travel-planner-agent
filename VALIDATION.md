@@ -29,9 +29,11 @@ fields; strict local response validation remains in place.
 ## Evidence and limits
 
 `example_conversations.txt` contains the recorded live synthetic conversations.
-Screenshots identify the live model. Browser preview uses a disposable test
-account on loopback port 8003; the normal launcher uses 8001. No key, password,
-account store, or private export is submitted.
+The live validation used a disposable test account on loopback port 8003;
+the normal launcher uses 8001. The earlier validation screenshots were removed
+at the project owner's request to leave `screenshots/` ready for their own
+demo video. No video has been uploaded yet. No key, password, account store,
+or private export is submitted.
 
 Scope classification is model-dependent and can make mistakes. These checks do
 not prove every jailbreak will be stopped or every personal detail will be

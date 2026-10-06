@@ -1,5 +1,10 @@
 # Personal Travel Planner
 
+**[Instructions: setup, login, and usage](INSTRUCTIONS.md)** ·
+**[How the code works](INSTRUCTIONS.md#how-the-code-works)** ·
+**[Demo video folder](screenshots/)** ·
+**[Example conversations](example_conversations.txt)**
+
 A simple **live Google ADK + Gemini** agent that creates and revises travel
 itineraries. Describe your trip naturally, or use the optional form. There is no
 offline planner, destination allowlist, fixed attraction catalog, or preset price
@@ -108,14 +113,19 @@ model to protect it. Anyone using an unlocked signed-in browser can see that cha
 |---|---|
 | Google ADK agent | `agent.py` |
 | Dependencies | `requirements.txt` |
-| Setup and explanation | `README.md`, `START_HERE.md` |
-| Running evidence | `screenshots/` |
+| Setup, login, and usage | [INSTRUCTIONS.md](INSTRUCTIONS.md) |
+| Running evidence | [screenshots/](screenshots/) — ready for the owner's demo video |
 | Three example conversations | `example_conversations.txt` |
 
 Supporting files: `server.py` (local API), `security.py` (login/session controls),
 `manage_users.py` (account setup), `travel_planner/guardrails.py` (schemas/checks),
 `travel_planner/engine.py` (ADK requests/budget arithmetic), and `static/` (browser).
 `travel_planner/agent.py` imports the root agent for ADK package discovery.
+
+The previous screenshots have been removed. The `screenshots/` folder contains
+only an empty `.gitkeep` placeholder so GitHub can retain it. Upload your own
+video there as `demo.mp4`; no demo video is included yet. See
+[video upload instructions](INSTRUCTIONS.md#add-your-demo-video).
 
 ## Tests
 
