@@ -184,7 +184,7 @@ live Gemini with synthetic requests. Model doubles appear only in automated test
 ## Add your demo video
 
 The previous screenshot files have been removed. GitHub cannot retain an empty
-directory, so [screenshots/](screenshots/) contains only an empty `.gitkeep` file
+directory, so [screenshots/](screenshots/) was initially created with an empty `.gitkeep` file
 to keep the folder available. The placeholder is not demo evidence.
 
 1. Record the app: sign in, request an itinerary, revise the hotel preference,
@@ -198,7 +198,7 @@ to keep the folder available. The placeholder is not demo evidence.
 
 Keep a browser-uploaded video under **25 MiB**, GitHub's per-file browser upload
 limit. See [GitHub's upload instructions](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository).
-Shorten or compress the recording if necessary. No video is included yet.
+Shorten or compress the recording if necessary. The owner's [demo video](https://github.com/shivangmohanty-stack/personal-travel-planner-agent/blob/main/screenshots/Example%20video%20Shivang%20Mohanty.mp4) is now in the repository.
 After uploading, a reviewer can open `screenshots/demo.mp4` from the repository.
 
 ## Troubleshooting
@@ -217,3 +217,17 @@ After uploading, a reviewer can open `screenshots/demo.mp4` from the repository.
 | Signed out after inactivity | Sign in again; expired temporary chats are cleared. |
 
 Keep `.env`, `.private`, `.venv`, and private chat exports out of GitHub.
+
+## Run Assignment 2 evaluation
+
+The evaluator tests the existing live agent without starting the website or
+signing in. Configure your private Gemini `.env` first, then run:
+
+```powershell
+.\.venv\Scripts\python.exe evaluator.py --output evaluation_results_new.json
+```
+
+It saves the actual answers and scores in JSON. This uses Gemini API quota.
+Read [the evaluation report](README.md#assignment-2-evaluation) for the dataset,
+metrics, results, failures and resume instructions. The committed report is a
+recorded run; a new run may score differently.

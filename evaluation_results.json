@@ -1,0 +1,874 @@
+{
+  "assignment": "Travel Planner Assignment 2",
+  "dataset_sha256": "103625db463bd8b6633456b201c8d3c794dce9784321be1209ef010a0236a9da",
+  "agent_model": "gemini-3.5-flash-lite",
+  "judge_model": "gemini-3.5-flash-lite",
+  "agent_sha256": "aa4ef817814dac851cf653d3e7ad8a783015e10e04887768bd2afba88da7d0e8",
+  "started_at_utc": "2026-10-08T07:32:52.984528+00:00",
+  "scoring_method": "Gemini LLM-as-a-Judge, observed tool checks and Codex-assisted evidence review",
+  "pass_rule": "Mean of four metrics >= 0.8 and no missed required behavior",
+  "tool_policy": "No tools are configured. No call scores 1 (not applicable); any unexpected call scores 0. Model calls are not tools.",
+  "evaluation_scope": "Real agent chat path with callbacks, structured validation and formatted budget. Synthetic inputs only; no user chats, login accounts or browser/API authentication tests.",
+  "results": [
+    {
+      "id": "TC01",
+      "name": "Valid 3-day Jaipur trip",
+      "category": "normal",
+      "input": "Plan a 3-day trip to Jaipur for one person with a total budget of INR 15000 excluding travel to Jaipur. I like history and local food.",
+      "expected_behavior": [
+        "Give a complete 3-day Jaipur itinerary",
+        "Recommend historical places and local food",
+        "Include accommodation, local transport and an itemized estimated budget",
+        "Respect INR 15000 or clearly explain any shortfall and suggest a cheaper option"
+      ],
+      "history": [],
+      "scores": {
+        "correctness": 1.0,
+        "relevance": 1.0,
+        "completeness": 1.0,
+        "tool_usage": 1.0
+      },
+      "actual_status": "answer",
+      "actual_response": "Welcome to your historical and culinary getaway in Jaipur! I have crafted a comprehensive 3-day itinerary tailored for a solo traveler with a deep interest in history and local food, all within your INR 15,000 budget (excluding travel to Jaipur).\n\nTrip Summary\n\n- Destination: Jaipur, India\n- Duration: 3 Days, 2 Nights\n- Group Size: 1 Person (1 Room)\n- Interests: History and Local Food\n- Budget Cap: INR 15,000 (excluding transport to Jaipur)\n\nDay-Wise Itinerary\n\nDay 1: Majestic Forts and Royal Flavors\n\n- Morning: Arrive and head straight to Amer Fort. Explore the stunning courtyards, Sheesh Mahal (Mirror Palace), and historical ramparts.\n- Afternoon: Visit the nearby Jaigarh Fort to see the massive Jaivana cannon and enjoy panoramic views of the hills.\n- Evening: Return to the walled city and dine at a rooftop restaurant near Chandpole, trying authentic Laal Maas or Veg Gatte ki Sabzi.\n\nDay 2: City Palaces and Bustling Bazaars\n\n- Morning: Explore the City Palace museum and the adjacent Jantar Mantar, a UNESCO World Heritage astronomical observatory.\n- Afternoon: Marvel at the intricate facade of Hawa Mahal (Palace of Winds) and stroll through Johari Bazaar for local crafts.\n- Evening: Take a dedicated street food walking tour around Bapu Bazaar and Kishanpole to sample Pyaz Kachori, Mirchi Vada, and traditional Ghevar.\n\nDay 3: Heritage Retreats and Local Sweets\n\n- Morning: Visit Albert Hall Museum in Ram Niwas Garden to view artifacts, paintings, and Egyptian mummies.\n- Afternoon: Explore Galta Ji Temple (Monkey Temple) nestled in the hills, known for its historic water springs and temples.\n- Evening: Enjoy a quiet traditional thali dinner before departing.\n\nPlaces and Reasons to Visit\n\n- Amer Fort: Essential for understanding Rajput architecture and military history.\n- Jantar Mantar: A fascinating 18th-century architectural marvel for astronomy enthusiasts.\n- Hawa Mahal: An iconic historical symbol of Jaipur's royal heritage.\n\nFood Recommendations\n\n- Rawat Mishthan Bhandar: Famous for authentic Pyaz Kachori.\n- Laxmi Misthan Bhandar (LMB): Great for traditional sweets like Ghevar and heritage Rajasthani thalis.\n- Street stalls around Tripolia Bazaar: Best for authentic local snacking.\n\nAccommodation Areas and Candidates\n\n- Recommended Area: Bani Park or near the Railway Station for easy transit and budget guesthouses.\n- Candidate 1: Hotel Kalyan (Bani Park) - A popular heritage-style budget stay (please verify current rates and ratings independently).\n- Candidate 2: Umaid Bhawan - Heritage style stay (verify rates to ensure they fit your budget).\n\nLocal Transport\n\n- Use auto-rickshaws for short distances within the city and app-based cab aggregators (Ola/Uber) for safety and convenience.\n\nPractical Tips\n\n- Wear comfortable walking shoes, especially for exploring forts.\n- Keep hydrated and carry sunscreen.\n- Negotiate auto-rickshaw fares politely if meters are not used.\n\nEstimated Budget Breakdown\n\n- Currency: INR\n- Limit: 15000\n- Assumptions: 2 nights in a budget hotel/homestay, INR 1200 per day for food, INR 1500 total for monument entry fees, and INR 2000 for local transport.\n\nEstimated budget (INR) — estimates, not live quotes\n• Accommodation: 5,000.00 — 2 nights in a private room at a budget-friendly hotel or heritage homestay.\n• Food and Dining: 3,600.00 — INR 1200 per day covering local street food, thalis, and bottled water.\n• Sightseeing and Monuments: 1,500.00 — Entry tickets and occasional audio guides for Amer Fort, City Palace, Jantar Mantar, and Albert Hall.\n• Local Transport: 2,000.00 — Auto-rickshaws and occasional app-based cabs for 3 days of city travel.\n• Miscellaneous and Shopping: 1,000.00 — Small souvenirs and incidental expenses.\nEstimated total: INR 13,100.00\nRemaining budget: INR 1,900.00",
+      "structured_response": {
+        "status": "answer",
+        "answer": "Welcome to your historical and culinary getaway in Jaipur! I have crafted a comprehensive 3-day itinerary tailored for a solo traveler with a deep interest in history and local food, all within your INR 15,000 budget (excluding travel to Jaipur).\n\nTrip Summary\n\n- Destination: Jaipur, India\n- Duration: 3 Days, 2 Nights\n- Group Size: 1 Person (1 Room)\n- Interests: History and Local Food\n- Budget Cap: INR 15,000 (excluding transport to Jaipur)\n\nDay-Wise Itinerary\n\nDay 1: Majestic Forts and Royal Flavors\n\n- Morning: Arrive and head straight to Amer Fort. Explore the stunning courtyards, Sheesh Mahal (Mirror Palace), and historical ramparts.\n- Afternoon: Visit the nearby Jaigarh Fort to see the massive Jaivana cannon and enjoy panoramic views of the hills.\n- Evening: Return to the walled city and dine at a rooftop restaurant near Chandpole, trying authentic Laal Maas or Veg Gatte ki Sabzi.\n\nDay 2: City Palaces and Bustling Bazaars\n\n- Morning: Explore the City Palace museum and the adjacent Jantar Mantar, a UNESCO World Heritage astronomical observatory.\n- Afternoon: Marvel at the intricate facade of Hawa Mahal (Palace of Winds) and stroll through Johari Bazaar for local crafts.\n- Evening: Take a dedicated street food walking tour around Bapu Bazaar and Kishanpole to sample Pyaz Kachori, Mirchi Vada, and traditional Ghevar.\n\nDay 3: Heritage Retreats and Local Sweets\n\n- Morning: Visit Albert Hall Museum in Ram Niwas Garden to view artifacts, paintings, and Egyptian mummies.\n- Afternoon: Explore Galta Ji Temple (Monkey Temple) nestled in the hills, known for its historic water springs and temples.\n- Evening: Enjoy a quiet traditional thali dinner before departing.\n\nPlaces and Reasons to Visit\n\n- Amer Fort: Essential for understanding Rajput architecture and military history.\n- Jantar Mantar: A fascinating 18th-century architectural marvel for astronomy enthusiasts.\n- Hawa Mahal: An iconic historical symbol of Jaipur's royal heritage.\n\nFood Recommendations\n\n- Rawat Mishthan Bhandar: Famous for authentic Pyaz Kachori.\n- Laxmi Misthan Bhandar (LMB): Great for traditional sweets like Ghevar and heritage Rajasthani thalis.\n- Street stalls around Tripolia Bazaar: Best for authentic local snacking.\n\nAccommodation Areas and Candidates\n\n- Recommended Area: Bani Park or near the Railway Station for easy transit and budget guesthouses.\n- Candidate 1: Hotel Kalyan (Bani Park) - A popular heritage-style budget stay (please verify current rates and ratings independently).\n- Candidate 2: Umaid Bhawan - Heritage style stay (verify rates to ensure they fit your budget).\n\nLocal Transport\n\n- Use auto-rickshaws for short distances within the city and app-based cab aggregators (Ola/Uber) for safety and convenience.\n\nPractical Tips\n\n- Wear comfortable walking shoes, especially for exploring forts.\n- Keep hydrated and carry sunscreen.\n- Negotiate auto-rickshaw fares politely if meters are not used.\n\nEstimated Budget Breakdown\n\n- Currency: INR\n- Limit: 15000\n- Assumptions: 2 nights in a budget hotel/homestay, INR 1200 per day for food, INR 1500 total for monument entry fees, and INR 2000 for local transport.",
+        "budget": {
+          "currency": "INR",
+          "limit": 15000.0,
+          "items": [
+            {
+              "category": "Accommodation",
+              "amount": 5000.0,
+              "assumption": "2 nights in a private room at a budget-friendly hotel or heritage homestay."
+            },
+            {
+              "category": "Food and Dining",
+              "amount": 3600.0,
+              "assumption": "INR 1200 per day covering local street food, thalis, and bottled water."
+            },
+            {
+              "category": "Sightseeing and Monuments",
+              "amount": 1500.0,
+              "assumption": "Entry tickets and occasional audio guides for Amer Fort, City Palace, Jantar Mantar, and Albert Hall."
+            },
+            {
+              "category": "Local Transport",
+              "amount": 2000.0,
+              "assumption": "Auto-rickshaws and occasional app-based cabs for 3 days of city travel."
+            },
+            {
+              "category": "Miscellaneous and Shopping",
+              "amount": 1000.0,
+              "assumption": "Small souvenirs and incidental expenses."
+            }
+          ]
+        }
+      },
+      "agent_seconds": 9.77,
+      "tool_evidence": {
+        "available_tools": [],
+        "expected_tools": [],
+        "observed_function_calls": [],
+        "applicability": "not applicable"
+      },
+      "judge_assessment": {
+        "correctness": 1.0,
+        "relevance": 1.0,
+        "completeness": 1.0,
+        "tool_usage": 1.0,
+        "reason": "The agent provided a complete 3-day Jaipur itinerary focused on history and local food, stayed within the INR 15000 budget, included accommodation, local transport, and an itemized budget.",
+        "missed_expectations": [],
+        "concerns": []
+      },
+      "reason": "The agent provided a complete 3-day Jaipur itinerary focused on history and local food, stayed within the INR 15000 budget, included accommodation, local transport, and an itemized budget.",
+      "missed_expectations": [],
+      "concerns": [],
+      "passed": true,
+      "overall_score": 1.0,
+      "overall_percentage": 100.0,
+      "review": {
+        "reviewer": "Codex-assisted review",
+        "scores_changed": false,
+        "note": "Checked against the expected behavior and saved response. Travel facts and prices were not independently verified."
+      }
+    },
+    {
+      "id": "TC02",
+      "name": "Valid 5-day Delhi trip",
+      "category": "normal",
+      "input": "Plan a 5-day trip to Delhi for one person with INR 25000 excluding travel to Delhi. I enjoy museums and sightseeing.",
+      "expected_behavior": [
+        "Give exactly 5 days in Delhi",
+        "Include museums and sightseeing",
+        "Provide accommodation, transport and an estimated budget within INR 25000 or explain a shortfall"
+      ],
+      "history": [],
+      "scores": {
+        "correctness": 1.0,
+        "relevance": 1.0,
+        "completeness": 1.0,
+        "tool_usage": 1.0
+      },
+      "actual_status": "answer",
+      "actual_response": "Welcome to your personalized 5-day cultural and sightseeing itinerary for Delhi! Designed specifically for a solo traveler with a budget of INR 25,000 (excluding long-distance travel to Delhi), this plan balances iconic historical landmarks, world-class museums, and fantastic local food experiences while keeping comfortable mid-range lodging and transit in mind.\n\n### Summary\n\n- Duration: 5 Days / 4 Nights\n- Group Size: 1 Adult\n- Focus: Museums and Sightseeing\n- Total Budget Cap: INR 25,000\n\n### Day-Wise Itinerary\n\nDay 1: Imperial Heritage and Old Delhi\n- Morning: Arrive and settle into your accommodation. Head straight to the magnificent Red Fort to explore its historic Mughal architecture and museums.\n- Afternoon: Take a cycle rickshaw ride through the bustling alleys of Chandni Chowk. Visit Jama Masjid, one of India's largest mosques.\n- Evening: Savor authentic street food or traditional Mughlai cuisine near Karim's or surrounding lanes, followed by a quiet evening walk around Connaught Place.\n\nDay 2: Museum Hopping and Political Heart\n- Morning: Immerse yourself in the vast collections at the National Museum on Janpath, featuring ancient artifacts, sculptures, and miniature paintings.\n- Afternoon: Visit the National Gallery of Modern Art (NGMA) near India Gate to admire contemporary and colonial-era Indian art.\n- Evening: Walk down Kartavya Path to view India Gate and the illuminated Rashtrapati Bhavan (Presidential Estate).\n\nDay 3: Mughal Grandeur and Sufi Shrines\n- Morning: Explore Humayun's Tomb, the stunning precursor to the Taj Mahal, and take in the serene surrounding gardens.\n- Afternoon: Visit the nearby Sunder Nursery for a relaxing walk among heritage monuments and botanical landscapes.\n- Evening: Experience the soul-stirring Qawwali music session at the Nizamuddin Dargah (held Thursday and Friday evenings, or enjoy the tranquil atmosphere on other days).\n\nDay 4: Ancient History and Cultural Parks\n- Morning: Discover the towering Qutb Minar complex and the mysterious Iron Pillar.\n- Afternoon: Explore the National Rail Museum in Chanakyapuri for a fun, nostalgic look at India's railway heritage.\n- Evening: Unwind at Lodhi Gardens, admiring the Sayyid and Lodi dynasty tombs nestled among lush greenery.\n\nDay 5: Crafts and Departure\n- Morning: Visit the National Handicrafts and Handlooms Museum (Crafts Museum) in Pragati Maidan to see live artisan demonstrations and traditional textiles.\n- Afternoon: Pick up any last-minute souvenirs at Dilli Haat INA before heading to your departure hub.\n\n### Places and Reasons to Visit\n\n- National Museum: Essential for history lovers to understand India's multi-millennia timeline.\n- Humayun's Tomb: Breathtaking architecture and a UNESCO World Heritage site.\n- Qutb Minar: Showcases early Indo-Islamic architecture at its finest.\n- Crafts Museum: Offers a peaceful village-like setting to appreciate traditional Indian crafts.\n\n### Food Recommendations\n\n- Old Delhi: Try parathas at Paranthewali Gali and kebabs near Jama Masjid.\n- Connaught Place: Enjoy local cafes and regional thalis.\n- Dilli Haat: Great for tasting street food from various Indian states in a hygienic, open-air environment.\n\n### Accommodation Areas and Candidates\n\nFor a solo traveler on this budget, staying near central transit hubs like Paharganj, Karol Bagh, or South Delhi guesthouses is ideal.\n- Candidate 1: Smyle Inn (Paharganj) - Budget-friendly, well-reviewed guesthouse.\n- Candidate 2: Bloomrooms (Janpath or Link Road) - Clean, contemporary design (request rates to verify fit within budget).\nNote: Official star ratings and current room availability must be verified independently before booking.\n\n### Local Transport\n\n- Delhi Metro: The most efficient, safe, and affordable way to traverse the city. Use a tourist smart card.\n- Auto-rickshaws and Ride-hailing Apps (Uber/Ola): Best for last-mile connectivity where the metro doesn't reach directly.\n\n### Practical Tips\n\n- Keep a scarf or light shawl handy for visiting religious sites.\n- Stay hydrated and carry bottled water.\n- Download the Delhi Metro Rail Corporation (DMRC) app for easy route planning.\n\nEstimated budget (INR) — estimates, not live quotes\n• Accommodation: 8,000.00 — INR 2000 per night for 4 nights in a clean, budget-friendly private room or guesthouse for 1 person.\n• Food and Dining: 5,000.00 — INR 1000 per day for a mix of local eateries, street food, and sit-down meals.\n• Local Transport: 2,500.00 — Using Delhi Metro cards, auto-rickshaws, and occasional app-based cabs over 5 days.\n• Sightseeing and Museums: 1,500.00 — Entry tickets for monuments (Red Fort, Qutb Minar, Humayun's Tomb) and museum admission fees.\n• Miscellaneous and Souvenirs: 3,000.00 — Buffer for small shopping, bottled water, snacks, and emergency expenses.\nEstimated total: INR 20,000.00\nRemaining budget: INR 5,000.00",
+      "structured_response": {
+        "status": "answer",
+        "answer": "Welcome to your personalized 5-day cultural and sightseeing itinerary for Delhi! Designed specifically for a solo traveler with a budget of INR 25,000 (excluding long-distance travel to Delhi), this plan balances iconic historical landmarks, world-class museums, and fantastic local food experiences while keeping comfortable mid-range lodging and transit in mind.\n\n### Summary\n\n- Duration: 5 Days / 4 Nights\n- Group Size: 1 Adult\n- Focus: Museums and Sightseeing\n- Total Budget Cap: INR 25,000\n\n### Day-Wise Itinerary\n\nDay 1: Imperial Heritage and Old Delhi\n- Morning: Arrive and settle into your accommodation. Head straight to the magnificent Red Fort to explore its historic Mughal architecture and museums.\n- Afternoon: Take a cycle rickshaw ride through the bustling alleys of Chandni Chowk. Visit Jama Masjid, one of India's largest mosques.\n- Evening: Savor authentic street food or traditional Mughlai cuisine near Karim's or surrounding lanes, followed by a quiet evening walk around Connaught Place.\n\nDay 2: Museum Hopping and Political Heart\n- Morning: Immerse yourself in the vast collections at the National Museum on Janpath, featuring ancient artifacts, sculptures, and miniature paintings.\n- Afternoon: Visit the National Gallery of Modern Art (NGMA) near India Gate to admire contemporary and colonial-era Indian art.\n- Evening: Walk down Kartavya Path to view India Gate and the illuminated Rashtrapati Bhavan (Presidential Estate).\n\nDay 3: Mughal Grandeur and Sufi Shrines\n- Morning: Explore Humayun's Tomb, the stunning precursor to the Taj Mahal, and take in the serene surrounding gardens.\n- Afternoon: Visit the nearby Sunder Nursery for a relaxing walk among heritage monuments and botanical landscapes.\n- Evening: Experience the soul-stirring Qawwali music session at the Nizamuddin Dargah (held Thursday and Friday evenings, or enjoy the tranquil atmosphere on other days).\n\nDay 4: Ancient History and Cultural Parks\n- Morning: Discover the towering Qutb Minar complex and the mysterious Iron Pillar.\n- Afternoon: Explore the National Rail Museum in Chanakyapuri for a fun, nostalgic look at India's railway heritage.\n- Evening: Unwind at Lodhi Gardens, admiring the Sayyid and Lodi dynasty tombs nestled among lush greenery.\n\nDay 5: Crafts and Departure\n- Morning: Visit the National Handicrafts and Handlooms Museum (Crafts Museum) in Pragati Maidan to see live artisan demonstrations and traditional textiles.\n- Afternoon: Pick up any last-minute souvenirs at Dilli Haat INA before heading to your departure hub.\n\n### Places and Reasons to Visit\n\n- National Museum: Essential for history lovers to understand India's multi-millennia timeline.\n- Humayun's Tomb: Breathtaking architecture and a UNESCO World Heritage site.\n- Qutb Minar: Showcases early Indo-Islamic architecture at its finest.\n- Crafts Museum: Offers a peaceful village-like setting to appreciate traditional Indian crafts.\n\n### Food Recommendations\n\n- Old Delhi: Try parathas at Paranthewali Gali and kebabs near Jama Masjid.\n- Connaught Place: Enjoy local cafes and regional thalis.\n- Dilli Haat: Great for tasting street food from various Indian states in a hygienic, open-air environment.\n\n### Accommodation Areas and Candidates\n\nFor a solo traveler on this budget, staying near central transit hubs like Paharganj, Karol Bagh, or South Delhi guesthouses is ideal.\n- Candidate 1: Smyle Inn (Paharganj) - Budget-friendly, well-reviewed guesthouse.\n- Candidate 2: Bloomrooms (Janpath or Link Road) - Clean, contemporary design (request rates to verify fit within budget).\nNote: Official star ratings and current room availability must be verified independently before booking.\n\n### Local Transport\n\n- Delhi Metro: The most efficient, safe, and affordable way to traverse the city. Use a tourist smart card.\n- Auto-rickshaws and Ride-hailing Apps (Uber/Ola): Best for last-mile connectivity where the metro doesn't reach directly.\n\n### Practical Tips\n\n- Keep a scarf or light shawl handy for visiting religious sites.\n- Stay hydrated and carry bottled water.\n- Download the Delhi Metro Rail Corporation (DMRC) app for easy route planning.",
+        "budget": {
+          "currency": "INR",
+          "limit": 25000.0,
+          "items": [
+            {
+              "category": "Accommodation",
+              "amount": 8000.0,
+              "assumption": "INR 2000 per night for 4 nights in a clean, budget-friendly private room or guesthouse for 1 person."
+            },
+            {
+              "category": "Food and Dining",
+              "amount": 5000.0,
+              "assumption": "INR 1000 per day for a mix of local eateries, street food, and sit-down meals."
+            },
+            {
+              "category": "Local Transport",
+              "amount": 2500.0,
+              "assumption": "Using Delhi Metro cards, auto-rickshaws, and occasional app-based cabs over 5 days."
+            },
+            {
+              "category": "Sightseeing and Museums",
+              "amount": 1500.0,
+              "assumption": "Entry tickets for monuments (Red Fort, Qutb Minar, Humayun's Tomb) and museum admission fees."
+            },
+            {
+              "category": "Miscellaneous and Souvenirs",
+              "amount": 3000.0,
+              "assumption": "Buffer for small shopping, bottled water, snacks, and emergency expenses."
+            }
+          ]
+        }
+      },
+      "agent_seconds": 10.64,
+      "tool_evidence": {
+        "available_tools": [],
+        "expected_tools": [],
+        "observed_function_calls": [],
+        "applicability": "not applicable"
+      },
+      "judge_assessment": {
+        "correctness": 1.0,
+        "relevance": 1.0,
+        "completeness": 1.0,
+        "tool_usage": 1.0,
+        "reason": "The response perfectly satisfies all expected behaviors. It outlines a 5-day trip to Delhi for a solo traveler, heavily features museums and sightseeing, provides specific accommodation options, local transport details, and an estimated budget summing up to INR 20,000, which is well within the INR 25,000 limit.",
+        "missed_expectations": [],
+        "concerns": []
+      },
+      "reason": "The response perfectly satisfies all expected behaviors. It outlines a 5-day trip to Delhi for a solo traveler, heavily features museums and sightseeing, provides specific accommodation options, local transport details, and an estimated budget summing up to INR 20,000, which is well within the INR 25,000 limit.",
+      "missed_expectations": [],
+      "concerns": [],
+      "passed": true,
+      "overall_score": 1.0,
+      "overall_percentage": 100.0,
+      "review": {
+        "reviewer": "Codex-assisted review",
+        "scores_changed": false,
+        "note": "Checked against the expected behavior and saved response. Travel facts and prices were not independently verified."
+      }
+    },
+    {
+      "id": "TC03",
+      "name": "Low-budget trip",
+      "category": "budget",
+      "input": "Plan 2 days in Jaipur for one person with only INR 2500 total excluding travel to Jaipur. I am fine with a hostel and cheap local food.",
+      "expected_behavior": [
+        "Plan 2 days with affordable activities, a hostel and cheap food",
+        "Include itemized costs and realistic assumptions",
+        "Keep the estimate within INR 2500 or honestly explain why it is insufficient and offer alternatives",
+        "Do not quietly recommend expensive hotels"
+      ],
+      "history": [],
+      "scores": {
+        "correctness": 1.0,
+        "relevance": 1.0,
+        "completeness": 1.0,
+        "tool_usage": 1.0
+      },
+      "actual_status": "answer",
+      "actual_response": "Trip Summary\n\nWelcome to your budget-friendly 2-day solo trip to Jaipur! With a strict total cap of INR 2500, we will focus on low-cost cultural sights, authentic street food, affordable hostel lodging, and public or shared transport.\n\nDay-Wise Itinerary\n\nDay 1: The Heart of the Walled City\n- Morning: Arrive and head straight to Hawa Mahal. Admire the stunning honeycomb facade from the outside to save on entry fees, then walk through the bustling Johari Bazaar.\n- Afternoon: Visit City Palace. As a student or budget traveler, check for discounted ticket options, or simply explore the majestic courtyards and museum exhibits.\n- Evening: Watch the sunset near the picturesque Jantar Mantar and enjoy a budget dinner of local pyaaz kachori and street snacks.\n\nDay 2: Forts and Local Culture\n- Morning: Take a shared auto-rickshaw to Amer Fort. Walk up the main ramparts instead of taking an elephant ride to keep costs down and enjoy the sweeping valley views.\n- Afternoon: Stop by Jal Mahal for a scenic roadside view of the water palace and take plenty of photos.\n- Evening: Spend your final hours browsing Bapu Bazaar for budget souvenirs and enjoying a warm cup of local chai before departure.\n\nPlaces and Reasons to Visit\n- Hawa Mahal: An iconic architectural marvel of Jaipur that looks breathtaking in the morning light.\n- City Palace: A wonderful blend of Rajasthani and Mughal architecture offering deep historical insight.\n- Amer Fort: A majestic hilltop fort showcasing rich history and intricate craftsmanship.\n\nFood Recommendations\n- Local street food stalls around Johari Bazaar and Bapu Bazaar for samosas, kachoris, andlassi.\n- Simple neighborhood dhabas for wholesome vegetarian thalis.\n\nAccommodation Options\n- Candidate Hostels: Look for backpacker hostels such as Moustache Hostel Jaipur or Zostel Jaipur. Please note that official star ratings and live availability must be verified independently before booking.\n\nLocal Transport\n- Utilize shared auto-rickshaws, e-rickshaws, and local buses to navigate the city affordably.\n\nPractical Tips\n- Carry a reusable water bottle, wear comfortable walking shoes, and negotiate auto-rickshaw fares politely in advance.\n\nEstimated Budget Assumptions\n- Duration: 2 days and 1 night.\n- Group Size: 1 person.\n- Accommodation: 1 night in a shared hostel dorm bed.\n- Exclusions: Long-distance travel to and from Jaipur is excluded from the INR 2500 total limit.\n\nEstimated budget (INR) — estimates, not live quotes\n• Accommodation: 600.00 — 1 night in a shared hostel dorm bed.\n• Food and Drink: 800.00 — Affordable local street food and budget dhabas for 2 days.\n• Sightseeing: 600.00 — Discounted entry tickets or exterior views for major heritage sites.\n• Local Transport: 500.00 — Shared autos and e-rickshaws for getting around the city.\nEstimated total: INR 2,500.00\nRemaining budget: INR 0.00",
+      "structured_response": {
+        "status": "answer",
+        "answer": "Trip Summary\n\nWelcome to your budget-friendly 2-day solo trip to Jaipur! With a strict total cap of INR 2500, we will focus on low-cost cultural sights, authentic street food, affordable hostel lodging, and public or shared transport.\n\nDay-Wise Itinerary\n\nDay 1: The Heart of the Walled City\n- Morning: Arrive and head straight to Hawa Mahal. Admire the stunning honeycomb facade from the outside to save on entry fees, then walk through the bustling Johari Bazaar.\n- Afternoon: Visit City Palace. As a student or budget traveler, check for discounted ticket options, or simply explore the majestic courtyards and museum exhibits.\n- Evening: Watch the sunset near the picturesque Jantar Mantar and enjoy a budget dinner of local pyaaz kachori and street snacks.\n\nDay 2: Forts and Local Culture\n- Morning: Take a shared auto-rickshaw to Amer Fort. Walk up the main ramparts instead of taking an elephant ride to keep costs down and enjoy the sweeping valley views.\n- Afternoon: Stop by Jal Mahal for a scenic roadside view of the water palace and take plenty of photos.\n- Evening: Spend your final hours browsing Bapu Bazaar for budget souvenirs and enjoying a warm cup of local chai before departure.\n\nPlaces and Reasons to Visit\n- Hawa Mahal: An iconic architectural marvel of Jaipur that looks breathtaking in the morning light.\n- City Palace: A wonderful blend of Rajasthani and Mughal architecture offering deep historical insight.\n- Amer Fort: A majestic hilltop fort showcasing rich history and intricate craftsmanship.\n\nFood Recommendations\n- Local street food stalls around Johari Bazaar and Bapu Bazaar for samosas, kachoris, andlassi.\n- Simple neighborhood dhabas for wholesome vegetarian thalis.\n\nAccommodation Options\n- Candidate Hostels: Look for backpacker hostels such as Moustache Hostel Jaipur or Zostel Jaipur. Please note that official star ratings and live availability must be verified independently before booking.\n\nLocal Transport\n- Utilize shared auto-rickshaws, e-rickshaws, and local buses to navigate the city affordably.\n\nPractical Tips\n- Carry a reusable water bottle, wear comfortable walking shoes, and negotiate auto-rickshaw fares politely in advance.\n\nEstimated Budget Assumptions\n- Duration: 2 days and 1 night.\n- Group Size: 1 person.\n- Accommodation: 1 night in a shared hostel dorm bed.\n- Exclusions: Long-distance travel to and from Jaipur is excluded from the INR 2500 total limit.",
+        "budget": {
+          "currency": "INR",
+          "limit": 2500.0,
+          "items": [
+            {
+              "category": "Accommodation",
+              "amount": 600.0,
+              "assumption": "1 night in a shared hostel dorm bed."
+            },
+            {
+              "category": "Food and Drink",
+              "amount": 800.0,
+              "assumption": "Affordable local street food and budget dhabas for 2 days."
+            },
+            {
+              "category": "Sightseeing",
+              "amount": 600.0,
+              "assumption": "Discounted entry tickets or exterior views for major heritage sites."
+            },
+            {
+              "category": "Local Transport",
+              "amount": 500.0,
+              "assumption": "Shared autos and e-rickshaws for getting around the city."
+            }
+          ]
+        }
+      },
+      "agent_seconds": 10.11,
+      "tool_evidence": {
+        "available_tools": [],
+        "expected_tools": [],
+        "observed_function_calls": [],
+        "applicability": "not applicable"
+      },
+      "judge_assessment": {
+        "correctness": 1.0,
+        "relevance": 1.0,
+        "completeness": 1.0,
+        "tool_usage": 1.0,
+        "reason": "The agent fully satisfied all expected behaviors. It planned a 2-day budget trip to Jaipur for one person adhering strictly to the INR 2500 limit. It included affordable activities (such as viewing Hawa Mahal from outside and walking up Amer Fort), suggested backpacker hostels, cheap street food, and provided a clear itemized breakdown that summed up to exactly INR 2500 without recommending expensive hotels.",
+        "missed_expectations": [],
+        "concerns": []
+      },
+      "reason": "The agent fully satisfied all expected behaviors. It planned a 2-day budget trip to Jaipur for one person adhering strictly to the INR 2500 limit. It included affordable activities (such as viewing Hawa Mahal from outside and walking up Amer Fort), suggested backpacker hostels, cheap street food, and provided a clear itemized breakdown that summed up to exactly INR 2500 without recommending expensive hotels.",
+      "missed_expectations": [],
+      "concerns": [],
+      "passed": true,
+      "overall_score": 1.0,
+      "overall_percentage": 100.0,
+      "review": {
+        "reviewer": "Codex-assisted review",
+        "scores_changed": false,
+        "note": "Checked against the expected behavior and saved response. Travel facts and prices were not independently verified. The budget uses every rupee and depends on discounted entry or exterior visits; there is no contingency."
+      }
+    },
+    {
+      "id": "TC04",
+      "name": "Missing destination",
+      "category": "missing_information",
+      "input": "Plan a 3-day trip for one person with INR 15000. I like history and local food.",
+      "expected_behavior": [
+        "Ask which destination the user wants",
+        "Do not invent a destination or present a finalized itinerary before the answer"
+      ],
+      "history": [],
+      "scores": {
+        "correctness": 0.25,
+        "relevance": 0.5,
+        "completeness": 0.25,
+        "tool_usage": 1.0
+      },
+      "actual_status": "answer",
+      "actual_response": "Hello! I would be delighted to help you plan a culturally rich and budget-friendly 3-day solo trip tailored to your love for history and local food. Since you didn't mention the destination, I have created a fantastic sample itinerary for Delhi, which is a paradise for history buffs and food lovers, perfectly suited for your INR 15,000 budget.\n\n### Summary\nDestination: Delhi, India\nDuration: 3 Days, 2 Nights\nGroup Size: 1 Person\nInterests: History and Local Food\n\n### Day-Wise Itinerary\n\nDay 1: Exploring Old Delhi\n- Morning: Start your journey at the historic Red Fort (Lal Qila), walking through its grand halls and museums to soak in Mughal history. (Reason to visit: UNESCO World Heritage site and core of Mughal power).\n- Afternoon: Take a cycle rickshaw ride through the narrow lanes of Chandni Chowk and visit Jama Masjid, one of India's largest mosques. For lunch, dive into Old Delhi's culinary history with legendary stuffed parathas at Paranthe Wali Gali and succulent kebabs at Karim's.\n- Evening: Walk around the bustling spice market of Khari Baoli and enjoy a cup of traditional cutting chai as the sun sets.\n\nDay 2: Imperial and Lodi Heritage\n- Morning: Visit the Qutb Minar complex, featuring the towering minaret and the Iron Pillar that has resisted rust for over 1,600 years. (Reason to visit: Exceptional early Indo-Islamic architecture).\n- Afternoon: Head to Humayun's Tomb, the magnificent precursor to the Taj Mahal. For lunch, sample regional North Indian thali at a local eatery in Connaught Place.\n- Evening: Stroll through Lodi Gardens to see the picturesque tombs of the Lodi dynasty amidst lush green lawns, followed by a dinner of street-side chaat near Bengali Market.\n\nDay 3: Museums and Modern Flavors\n- Morning: Spend your morning at the National Museum to explore centuries of Indian art, artifacts, and historical relics.\n- Afternoon: Visit the nearby India Gate and war memorial area for photos and a relaxed walk. Enjoy a traditional lunch featuring butter chicken or vegetarian paneer tikka at a classic Delhi restaurant.\n- Evening: Spend your final hours picking up local sweets and souvenirs at Khan Market before heading to your departure transit.\n\n### Accommodation Areas and Candidates\nFor a solo traveler on this budget, clean and well-rated guesthouses or hostels in areas like Paharganj, Karol Bagh, or South Delhi (such as Bloomrooms or Zostel Delhi) are ideal. Please note these are candidate properties whose current rates, availability, and official ratings must be verified before booking.\n\n### Local Transport\nUse the Delhi Metro for fast, air-conditioned, and economical travel across the city. Supplement short distances with auto-rickshaws or app-based bike taxis.\n\n### Practical Tips\n- Always carry a reusable water bottle and stay hydrated.\n- Dress modestly when visiting religious sites like mosques and temples.\n- Keep small denomination cash handy for street food vendors who may not accept digital payments.\n\nIf you would like to choose a different destination or adjust any part of this plan, just let me know!\n\nEstimated budget (INR) — estimates, not live quotes\n• Accommodation: 3,600.00 — 2 nights in a budget hotel or private hostel room at INR 1,800 per night for 1 person.\n• Food and Dining: 3,500.00 — INR 1,167 per day for trying famous local eateries, street food, and standard meals.\n• Local Transport: 1,500.00 — Delhi Metro smart card usage and occasional auto-rickshaws for 3 days.\n• Sightseeing and Entry Fees: 1,400.00 — Tickets for Red Fort, Qutb Minar, Humayun's Tomb, and the National Museum.\n• Miscellaneous and Souvenirs: 1,000.00 — Buffer for local snacks, bottled water, and small souvenirs.\nEstimated total: INR 11,000.00\nRemaining budget: INR 4,000.00",
+      "structured_response": {
+        "status": "answer",
+        "answer": "Hello! I would be delighted to help you plan a culturally rich and budget-friendly 3-day solo trip tailored to your love for history and local food. Since you didn't mention the destination, I have created a fantastic sample itinerary for Delhi, which is a paradise for history buffs and food lovers, perfectly suited for your INR 15,000 budget.\n\n### Summary\nDestination: Delhi, India\nDuration: 3 Days, 2 Nights\nGroup Size: 1 Person\nInterests: History and Local Food\n\n### Day-Wise Itinerary\n\nDay 1: Exploring Old Delhi\n- Morning: Start your journey at the historic Red Fort (Lal Qila), walking through its grand halls and museums to soak in Mughal history. (Reason to visit: UNESCO World Heritage site and core of Mughal power).\n- Afternoon: Take a cycle rickshaw ride through the narrow lanes of Chandni Chowk and visit Jama Masjid, one of India's largest mosques. For lunch, dive into Old Delhi's culinary history with legendary stuffed parathas at Paranthe Wali Gali and succulent kebabs at Karim's.\n- Evening: Walk around the bustling spice market of Khari Baoli and enjoy a cup of traditional cutting chai as the sun sets.\n\nDay 2: Imperial and Lodi Heritage\n- Morning: Visit the Qutb Minar complex, featuring the towering minaret and the Iron Pillar that has resisted rust for over 1,600 years. (Reason to visit: Exceptional early Indo-Islamic architecture).\n- Afternoon: Head to Humayun's Tomb, the magnificent precursor to the Taj Mahal. For lunch, sample regional North Indian thali at a local eatery in Connaught Place.\n- Evening: Stroll through Lodi Gardens to see the picturesque tombs of the Lodi dynasty amidst lush green lawns, followed by a dinner of street-side chaat near Bengali Market.\n\nDay 3: Museums and Modern Flavors\n- Morning: Spend your morning at the National Museum to explore centuries of Indian art, artifacts, and historical relics.\n- Afternoon: Visit the nearby India Gate and war memorial area for photos and a relaxed walk. Enjoy a traditional lunch featuring butter chicken or vegetarian paneer tikka at a classic Delhi restaurant.\n- Evening: Spend your final hours picking up local sweets and souvenirs at Khan Market before heading to your departure transit.\n\n### Accommodation Areas and Candidates\nFor a solo traveler on this budget, clean and well-rated guesthouses or hostels in areas like Paharganj, Karol Bagh, or South Delhi (such as Bloomrooms or Zostel Delhi) are ideal. Please note these are candidate properties whose current rates, availability, and official ratings must be verified before booking.\n\n### Local Transport\nUse the Delhi Metro for fast, air-conditioned, and economical travel across the city. Supplement short distances with auto-rickshaws or app-based bike taxis.\n\n### Practical Tips\n- Always carry a reusable water bottle and stay hydrated.\n- Dress modestly when visiting religious sites like mosques and temples.\n- Keep small denomination cash handy for street food vendors who may not accept digital payments.\n\nIf you would like to choose a different destination or adjust any part of this plan, just let me know!",
+        "budget": {
+          "currency": "INR",
+          "limit": 15000.0,
+          "items": [
+            {
+              "category": "Accommodation",
+              "amount": 3600.0,
+              "assumption": "2 nights in a budget hotel or private hostel room at INR 1,800 per night for 1 person."
+            },
+            {
+              "category": "Food and Dining",
+              "amount": 3500.0,
+              "assumption": "INR 1,167 per day for trying famous local eateries, street food, and standard meals."
+            },
+            {
+              "category": "Local Transport",
+              "amount": 1500.0,
+              "assumption": "Delhi Metro smart card usage and occasional auto-rickshaws for 3 days."
+            },
+            {
+              "category": "Sightseeing and Entry Fees",
+              "amount": 1400.0,
+              "assumption": "Tickets for Red Fort, Qutb Minar, Humayun's Tomb, and the National Museum."
+            },
+            {
+              "category": "Miscellaneous and Souvenirs",
+              "amount": 1000.0,
+              "assumption": "Buffer for local snacks, bottled water, and small souvenirs."
+            }
+          ]
+        }
+      },
+      "agent_seconds": 8.9,
+      "tool_evidence": {
+        "available_tools": [],
+        "expected_tools": [],
+        "observed_function_calls": [],
+        "applicability": "not applicable"
+      },
+      "judge_assessment": {
+        "correctness": 0.25,
+        "relevance": 0.5,
+        "completeness": 0.25,
+        "tool_usage": 1.0,
+        "reason": "The user input omitted the destination. Expected behavior required the agent to ask for the destination and not invent one or present a finalized itinerary. Instead, the agent arbitrarily picked Delhi and presented a full itinerary.",
+        "missed_expectations": [
+          "Ask which destination the user wants",
+          "Do not invent a destination or present a finalized itinerary before the answer"
+        ],
+        "concerns": [
+          "Assumed a destination instead of asking for clarification when it was missing from the user prompt."
+        ]
+      },
+      "reason": "The user input omitted the destination. Expected behavior required the agent to ask for the destination and not invent one or present a finalized itinerary. Instead, the agent arbitrarily picked Delhi and presented a full itinerary.",
+      "missed_expectations": [
+        "Ask which destination the user wants",
+        "Do not invent a destination or present a finalized itinerary before the answer"
+      ],
+      "concerns": [
+        "Assumed a destination instead of asking for clarification when it was missing from the user prompt."
+      ],
+      "passed": false,
+      "overall_score": 0.5,
+      "overall_percentage": 50.0,
+      "review": {
+        "reviewer": "Codex-assisted review",
+        "scores_changed": false,
+        "note": "Checked against the expected behavior and saved response. Travel facts and prices were not independently verified."
+      }
+    },
+    {
+      "id": "TC05",
+      "name": "Missing budget",
+      "category": "missing_information",
+      "input": "Plan 3 days in Jaipur for one person. I like history and local food but have not decided my budget yet.",
+      "expected_behavior": [
+        "Ask about the budget OR provide a useful itinerary with clearly stated budget assumptions",
+        "Do not claim the user supplied a budget",
+        "If an itinerary is provided, include 3 days, history, food and an estimated cost"
+      ],
+      "history": [],
+      "scores": {
+        "correctness": 0.0,
+        "relevance": 0.0,
+        "completeness": 0.0,
+        "tool_usage": 1.0
+      },
+      "actual_status": "error",
+      "actual_response": null,
+      "passed": false,
+      "reason": "No usable response: provider, timeout or structured-validation failure. Details are intentionally not logged.",
+      "missed_expectations": [
+        "Ask about the budget OR provide a useful itinerary with clearly stated budget assumptions",
+        "Do not claim the user supplied a budget",
+        "If an itinerary is provided, include 3 days, history, food and an estimated cost"
+      ],
+      "concerns": [],
+      "agent_seconds": 3.67,
+      "tool_evidence": {
+        "available_tools": [],
+        "expected_tools": [],
+        "observed_function_calls": [],
+        "applicability": "not applicable"
+      },
+      "overall_score": 0.25,
+      "overall_percentage": 25.0,
+      "review": {
+        "reviewer": "Codex-assisted review",
+        "scores_changed": false,
+        "note": "Checked against the expected behavior and saved response. Travel facts and prices were not independently verified."
+      }
+    },
+    {
+      "id": "TC06",
+      "name": "Invalid number of days",
+      "category": "invalid_input",
+      "input": "Plan a 0-day trip to Jaipur for one person with INR 15000.",
+      "expected_behavior": [
+        "Explain that the number of days must be positive and ask for a valid duration",
+        "Do not silently change 0 days to 1 day or generate a finalized itinerary"
+      ],
+      "history": [],
+      "scores": {
+        "correctness": 0.0,
+        "relevance": 0.0,
+        "completeness": 0.0,
+        "tool_usage": 1.0
+      },
+      "actual_status": "error",
+      "actual_response": null,
+      "passed": false,
+      "reason": "No usable response: provider, timeout or structured-validation failure. Details are intentionally not logged.",
+      "missed_expectations": [
+        "Explain that the number of days must be positive and ask for a valid duration",
+        "Do not silently change 0 days to 1 day or generate a finalized itinerary"
+      ],
+      "concerns": [],
+      "agent_seconds": 3.24,
+      "tool_evidence": {
+        "available_tools": [],
+        "expected_tools": [],
+        "observed_function_calls": [],
+        "applicability": "not applicable"
+      },
+      "overall_score": 0.25,
+      "overall_percentage": 25.0,
+      "review": {
+        "reviewer": "Codex-assisted review",
+        "scores_changed": false,
+        "note": "Checked against the expected behavior and saved response. Travel facts and prices were not independently verified."
+      }
+    },
+    {
+      "id": "TC07",
+      "name": "Negative budget",
+      "category": "invalid_input",
+      "input": "Plan a 3-day Jaipur trip for one person with a total budget of INR -5000.",
+      "expected_behavior": [
+        "Explain that the budget must be positive and ask for a valid budget",
+        "Do not silently convert the negative budget to a positive amount or generate a finalized itinerary"
+      ],
+      "history": [],
+      "scores": {
+        "correctness": 0.0,
+        "relevance": 0.0,
+        "completeness": 0.0,
+        "tool_usage": 1.0
+      },
+      "actual_status": "error",
+      "actual_response": null,
+      "passed": false,
+      "reason": "No usable response: provider, timeout or structured-validation failure. Details are intentionally not logged.",
+      "missed_expectations": [
+        "Explain that the budget must be positive and ask for a valid budget",
+        "Do not silently convert the negative budget to a positive amount or generate a finalized itinerary"
+      ],
+      "concerns": [],
+      "agent_seconds": 2.81,
+      "tool_evidence": {
+        "available_tools": [],
+        "expected_tools": [],
+        "observed_function_calls": [],
+        "applicability": "not applicable"
+      },
+      "overall_score": 0.25,
+      "overall_percentage": 25.0,
+      "review": {
+        "reviewer": "Codex-assisted review",
+        "scores_changed": false,
+        "note": "Checked against the expected behavior and saved response. Travel facts and prices were not independently verified."
+      }
+    },
+    {
+      "id": "TC08",
+      "name": "Historical-place preference",
+      "category": "preferences",
+      "input": "Plan 3 days in Agra for one person with INR 12000 excluding travel to Agra. Focus on Mughal history and monuments. I do not want shopping malls.",
+      "expected_behavior": [
+        "Give a 3-day Agra itinerary focused on relevant historical monuments",
+        "Explain the historical choices",
+        "Avoid shopping malls",
+        "Include local transport, accommodation and an estimated budget within INR 12000 or explain a shortfall"
+      ],
+      "history": [],
+      "scores": {
+        "correctness": 0.0,
+        "relevance": 0.0,
+        "completeness": 0.0,
+        "tool_usage": 1.0
+      },
+      "actual_status": "error",
+      "actual_response": null,
+      "passed": false,
+      "reason": "No usable response: provider, timeout or structured-validation failure. Details are intentionally not logged.",
+      "missed_expectations": [
+        "Give a 3-day Agra itinerary focused on relevant historical monuments",
+        "Explain the historical choices",
+        "Avoid shopping malls",
+        "Include local transport, accommodation and an estimated budget within INR 12000 or explain a shortfall"
+      ],
+      "concerns": [],
+      "agent_seconds": 2.19,
+      "tool_evidence": {
+        "available_tools": [],
+        "expected_tools": [],
+        "observed_function_calls": [],
+        "applicability": "not applicable"
+      },
+      "overall_score": 0.25,
+      "overall_percentage": 25.0,
+      "review": {
+        "reviewer": "Codex-assisted review",
+        "scores_changed": false,
+        "note": "Checked against the expected behavior and saved response. Travel facts and prices were not independently verified."
+      }
+    },
+    {
+      "id": "TC09",
+      "name": "Food preference",
+      "category": "preferences",
+      "input": "Plan 2 days in Amritsar for one person with INR 8000 excluding travel to Amritsar. Focus on vegetarian Punjabi food and local culture. No meat or alcohol.",
+      "expected_behavior": [
+        "Give a 2-day Amritsar itinerary",
+        "Prioritize vegetarian Punjabi food and local culture",
+        "Do not recommend meat or alcohol",
+        "Include accommodation, transport and an estimated budget within INR 8000 or explain a shortfall"
+      ],
+      "history": [],
+      "scores": {
+        "correctness": 1.0,
+        "relevance": 1.0,
+        "completeness": 1.0,
+        "tool_usage": 1.0
+      },
+      "actual_status": "answer",
+      "actual_response": "Welcome to your spiritual and cultural getaway in Amritsar! This 2-day itinerary is tailored for one person on a vegetarian culinary and cultural journey, keeping strictly to your INR 8,000 budget while excluding travel to the city.\n\nSummary\nSpend 2 immersive days exploring the soul of Punjab. You will witness the deeply moving evening ceremony at the Wagah Border, experience the divine peace of the Golden Temple at both sunrise and night, and taste iconic vegetarian Punjabi street food.\n\nDay-Wise Itinerary\n\nDay 1: Spiritual Heart and Heritage\n\n- Morning: Start your day early at Sri Harmandir Sahib (Golden Temple). Walk around the parikrama and soak in the serene hymns.\n- Afternoon: Visit the historic Jallianwala Bagh memorial nearby to understand the city's poignant history. For lunch, enjoy a traditional vegetarian thali at Kesar Da Dhaba (known for its iconic dal makhani and kulche).\n- Evening: Head to the Partition Museum in Town Hall to learn about Punjab's history. Return to the Golden Temple at sunset to witness the palki sahib ceremony when the holy book is taken to its night resting place.\n\nDay 2: Culture and Border Pageantry\n\n- Morning: Enjoy a hearty breakfast of stuffed Amritsari kulcha with chole at Kulcha Land. Afterward, take a leisurely stroll through the colorful local bazaars around Katra Jaimal Singh.\n- Afternoon: Grab a quick lunch and board a shared taxi or organized tour to the Wagah Border (about 30 km away) to secure a good viewing spot for the afternoon Beating Retreat ceremony.\n- Evening: Return to the city and treat yourself to a traditional Punjabi sweet, like pinni or jalebi, near Town Hall before heading to your accommodation.\n\nPlaces and Reasons to Visit\n- Golden Temple: For unmatched peace, architecture, and the community kitchen (langar).\n- Jallianwala Bagh: A crucial historical landmark.\n- Wagah Border: For an energetic and patriotic cultural experience.\n\nFood Recommendations\nFocus entirely on vegetarian Punjabi delights such as amritsari kulcha, dal makhani, lassi, chole bature, and pure ghee sweets. Note that traditional Amritsari cuisine is completely vegetarian-friendly in many legendary spots, and local dhaba culture avoids alcohol.\n\nAccommodation Areas and Candidates\nStay near the Golden Temple or Heritage Street for easy walking access to the main sights. Candidate options to verify before booking include Hotel Golden Sarovar Portico or Regenta Inn. Please verify their current room rates, availability, and star ratings independently.\n\nLocal Transport\nUse auto-rickshaws for short trips within the city and shared cabs or tourist buses for the Wagah Border trip to keep transport costs low.\n\nPractical Tips\n- Dress modestly with your head covered when visiting gurudwaras.\n- Carry cash as many local street food vendors and auto drivers prefer it.\n- Arrive early at the Wagah Border to get good seats.\n\nEstimated Budget\nAssumptions: 1 person, 1 night stay in a budget-friendly hotel, local transport via auto and shared cab, and purely vegetarian meals.\n\n- Accommodation (1 night): INR 2500 (Assumes a clean mid-range room near the center)\n- Food & Dining (2 days): INR 1500 (Covers legendary dhaba meals, street food, and lassi)\n- Transport (Local autos and Wagah shared cab): INR 1200 (Assumes shared or economical transit)\n- Sightseeing & Museums: INR 300 (Nominal entry fees and donations)\n- Miscellaneous / Souvenirs: INR 500 (For local sweets and tea)\n\nLet me know if you would like to adjust any of these details!\n\nEstimated budget (INR) — estimates, not live quotes\n• Accommodation: 2,500.00 — 1 night for 1 person in a budget-friendly hotel near the Golden Temple.\n• Food & Dining: 1,500.00 — Vegetarian Punjabi meals, dhabas, street food, and lassi for 2 days.\n• Local Transport: 1,200.00 — Auto-rickshaws within the city and a shared taxi to Wagah Border.\n• Sightseeing: 300.00 — Museum tickets and donations.\n• Miscellaneous: 500.00 — Local sweets, snacks, and tea.\nEstimated total: INR 6,000.00\nRemaining budget: INR 2,000.00",
+      "structured_response": {
+        "status": "answer",
+        "answer": "Welcome to your spiritual and cultural getaway in Amritsar! This 2-day itinerary is tailored for one person on a vegetarian culinary and cultural journey, keeping strictly to your INR 8,000 budget while excluding travel to the city.\n\nSummary\nSpend 2 immersive days exploring the soul of Punjab. You will witness the deeply moving evening ceremony at the Wagah Border, experience the divine peace of the Golden Temple at both sunrise and night, and taste iconic vegetarian Punjabi street food.\n\nDay-Wise Itinerary\n\nDay 1: Spiritual Heart and Heritage\n\n- Morning: Start your day early at Sri Harmandir Sahib (Golden Temple). Walk around the parikrama and soak in the serene hymns.\n- Afternoon: Visit the historic Jallianwala Bagh memorial nearby to understand the city's poignant history. For lunch, enjoy a traditional vegetarian thali at Kesar Da Dhaba (known for its iconic dal makhani and kulche).\n- Evening: Head to the Partition Museum in Town Hall to learn about Punjab's history. Return to the Golden Temple at sunset to witness the palki sahib ceremony when the holy book is taken to its night resting place.\n\nDay 2: Culture and Border Pageantry\n\n- Morning: Enjoy a hearty breakfast of stuffed Amritsari kulcha with chole at Kulcha Land. Afterward, take a leisurely stroll through the colorful local bazaars around Katra Jaimal Singh.\n- Afternoon: Grab a quick lunch and board a shared taxi or organized tour to the Wagah Border (about 30 km away) to secure a good viewing spot for the afternoon Beating Retreat ceremony.\n- Evening: Return to the city and treat yourself to a traditional Punjabi sweet, like pinni or jalebi, near Town Hall before heading to your accommodation.\n\nPlaces and Reasons to Visit\n- Golden Temple: For unmatched peace, architecture, and the community kitchen (langar).\n- Jallianwala Bagh: A crucial historical landmark.\n- Wagah Border: For an energetic and patriotic cultural experience.\n\nFood Recommendations\nFocus entirely on vegetarian Punjabi delights such as amritsari kulcha, dal makhani, lassi, chole bature, and pure ghee sweets. Note that traditional Amritsari cuisine is completely vegetarian-friendly in many legendary spots, and local dhaba culture avoids alcohol.\n\nAccommodation Areas and Candidates\nStay near the Golden Temple or Heritage Street for easy walking access to the main sights. Candidate options to verify before booking include Hotel Golden Sarovar Portico or Regenta Inn. Please verify their current room rates, availability, and star ratings independently.\n\nLocal Transport\nUse auto-rickshaws for short trips within the city and shared cabs or tourist buses for the Wagah Border trip to keep transport costs low.\n\nPractical Tips\n- Dress modestly with your head covered when visiting gurudwaras.\n- Carry cash as many local street food vendors and auto drivers prefer it.\n- Arrive early at the Wagah Border to get good seats.\n\nEstimated Budget\nAssumptions: 1 person, 1 night stay in a budget-friendly hotel, local transport via auto and shared cab, and purely vegetarian meals.\n\n- Accommodation (1 night): INR 2500 (Assumes a clean mid-range room near the center)\n- Food & Dining (2 days): INR 1500 (Covers legendary dhaba meals, street food, and lassi)\n- Transport (Local autos and Wagah shared cab): INR 1200 (Assumes shared or economical transit)\n- Sightseeing & Museums: INR 300 (Nominal entry fees and donations)\n- Miscellaneous / Souvenirs: INR 500 (For local sweets and tea)\n\nLet me know if you would like to adjust any of these details!",
+        "budget": {
+          "currency": "INR",
+          "limit": 8000.0,
+          "items": [
+            {
+              "category": "Accommodation",
+              "amount": 2500.0,
+              "assumption": "1 night for 1 person in a budget-friendly hotel near the Golden Temple."
+            },
+            {
+              "category": "Food & Dining",
+              "amount": 1500.0,
+              "assumption": "Vegetarian Punjabi meals, dhabas, street food, and lassi for 2 days."
+            },
+            {
+              "category": "Local Transport",
+              "amount": 1200.0,
+              "assumption": "Auto-rickshaws within the city and a shared taxi to Wagah Border."
+            },
+            {
+              "category": "Sightseeing",
+              "amount": 300.0,
+              "assumption": "Museum tickets and donations."
+            },
+            {
+              "category": "Miscellaneous",
+              "amount": 500.0,
+              "assumption": "Local sweets, snacks, and tea."
+            }
+          ]
+        }
+      },
+      "agent_seconds": 9.14,
+      "tool_evidence": {
+        "available_tools": [],
+        "expected_tools": [],
+        "observed_function_calls": [],
+        "applicability": "not applicable"
+      },
+      "judge_assessment": {
+        "correctness": 1.0,
+        "relevance": 1.0,
+        "completeness": 1.0,
+        "tool_usage": 1.0,
+        "reason": "The response fully satisfies all user requirements and expected behaviors. It provides a 2-day itinerary for Amritsar focused on vegetarian food and local culture, strictly avoids meat and alcohol, includes accommodation and local transport recommendations, and details an estimated budget well within the INR 8000 limit.",
+        "missed_expectations": [],
+        "concerns": []
+      },
+      "reason": "The response fully satisfies all user requirements and expected behaviors. It provides a 2-day itinerary for Amritsar focused on vegetarian food and local culture, strictly avoids meat and alcohol, includes accommodation and local transport recommendations, and details an estimated budget well within the INR 8000 limit.",
+      "missed_expectations": [],
+      "concerns": [],
+      "passed": true,
+      "overall_score": 1.0,
+      "overall_percentage": 100.0,
+      "review": {
+        "reviewer": "Codex-assisted review",
+        "scores_changed": false,
+        "note": "Checked against the expected behavior and saved response. Travel facts and prices were not independently verified."
+      }
+    },
+    {
+      "id": "TC10",
+      "name": "Non-travel question",
+      "category": "outside_scope",
+      "input": "Can you write a Python program to sort a list?",
+      "expected_behavior": [
+        "Politely decline the unrelated coding task",
+        "Redirect the user to travel itinerary planning",
+        "Do not give Python code or explain sorting"
+      ],
+      "history": [],
+      "scores": {
+        "correctness": 1.0,
+        "relevance": 1.0,
+        "completeness": 1.0,
+        "tool_usage": 1.0
+      },
+      "actual_status": "refusal",
+      "actual_response": "I can help create and improve travel itineraries, including places to visit, accommodation, food, transport, and estimated budgets. Please keep your request related to planning a trip.",
+      "structured_response": {
+        "status": "refusal",
+        "answer": "I can help create and improve travel itineraries, including places to visit, accommodation, food, transport, and estimated budgets. Please keep your request related to planning a trip.",
+        "budget": null
+      },
+      "agent_seconds": 1.75,
+      "tool_evidence": {
+        "available_tools": [],
+        "expected_tools": [],
+        "observed_function_calls": [],
+        "applicability": "not applicable"
+      },
+      "judge_assessment": {
+        "correctness": 1.0,
+        "relevance": 1.0,
+        "completeness": 1.0,
+        "tool_usage": 1.0,
+        "reason": "The model correctly and politely declined the unrelated coding task, redirected the user to travel itinerary planning, and provided no code or sorting explanation.",
+        "missed_expectations": [],
+        "concerns": []
+      },
+      "reason": "The model correctly and politely declined the unrelated coding task, redirected the user to travel itinerary planning, and provided no code or sorting explanation.",
+      "missed_expectations": [],
+      "concerns": [],
+      "passed": true,
+      "overall_score": 1.0,
+      "overall_percentage": 100.0,
+      "review": {
+        "reviewer": "Codex-assisted review",
+        "scores_changed": false,
+        "note": "Checked against the expected behavior and saved response. Travel facts and prices were not independently verified."
+      }
+    },
+    {
+      "id": "TC11",
+      "name": "International destination and currency",
+      "category": "international",
+      "input": "Plan 4 days in Kyoto for two adults with a total budget of JPY 120000 excluding international flights. We like gardens, vegetarian food and a relaxed pace.",
+      "expected_behavior": [
+        "Give 4 relaxed days in Kyoto for two adults",
+        "Include gardens and vegetarian food",
+        "Use JPY and group-wide estimated costs",
+        "State nights and room assumptions and exclude international flights",
+        "Stay within JPY 120000 or explain a shortfall"
+      ],
+      "history": [],
+      "scores": {
+        "correctness": 0.5,
+        "relevance": 1.0,
+        "completeness": 0.75,
+        "tool_usage": 1.0
+      },
+      "actual_status": "answer",
+      "actual_response": "Hello! I would be delighted to help you plan a peaceful and relaxing 4-day getaway in Kyoto tailored for two adults who love gardens and vegetarian cuisine, all within your budget of JPY 120,000 (excluding international flights).\n\n### Trip Summary\nDuration: 4 Days, 3 Nights\nGroup Size: 2 Adults\nPace: Relaxed\nFocus: Zen gardens, temple grounds, and shojin ryori (traditional Buddhist vegetarian cuisine) / local vegetarian-friendly dining.\n\n### Accommodation Areas and Candidates\nTo keep a relaxed pace and stay within budget, I recommend staying in the Central Kyoto (Karasuma/Kawaramachi) area or near Higashiyama for easy transit to gardens and temples.\nCandidate 1: Hotel Resol Kyoto Kawaramachi Sanjo (Comfortable mid-range option, verify current rates).\nCandidate 2: Mitsui Garden Hotel Kyoto Sanjo (Great access to transit, verify current rates).\n*Note: Please verify availability and current star ratings before booking.* \n\n### Day-Wise Itinerary\n\nDay 1: Arrival and Historic Higashiyama Stroll\n- Morning: Arrive in Kyoto, check into your hotel, and settle in at a relaxed pace.\n- Afternoon: Visit Kennin-ji Temple in Gion to admire its famous twin dragon ceiling and serene rock garden.\n- Evening: Enjoy a quiet vegetarian dinner nearby, such as at a local cafe serving shojin-style bowls or plant-based ramen.\n\nDay 2: Northern Kyoto's Zen Masters\n- Morning: Take a bus or taxi to Ryoan-ji Temple to experience Japan's most famous rock garden in the quiet morning hours.\n- Afternoon: Stroll through the sprawling strolling gardens of Ninna-ji Temple nearby.\n- Evening: Dine at Shigetsu inside Tenryu-ji (Arashiyama area, reserve ahead) or a downtown vegetarian restaurant for dinner.\n\nDay 3: Arashiyama Bamboo and Moss Gardens\n- Morning: Head west to Arashiyama. Walk through the Bamboo Groves early, then visit the exquisite moss garden and temple grounds of Gio-ji.\n- Afternoon: Enjoy a leisurely boat ride or a quiet tea ceremony experience overlooking the river.\n- Evening: Savor a relaxing tofu-focused vegetarian meal (Yudofu) in Arashiyama.\n\nDay 4: Eastern Hills and Farewell\n- Morning: Visit Nanzen-ji Temple to see its historic aqueduct and stunning sub-temples with sublime rock gardens.\n- Afternoon: Stroll along the Philosopher's Path down toward Ginkaku-ji (The Silver Pavilion) for your final garden views before departure.\n\n### Food Highlights\nKyoto is world-renowned for shojin ryori (Buddhist vegetarian cuisine) and yudofu (hot tofu). Look for local spots offering vegan/vegetarian ramen and obanzai (traditional Kyoto-style vegetable side dishes).\n\n### Local Transport\nWe will rely primarily on Kyoto's efficient bus and subway network, supplemented by occasional short taxi rides to maintain a relaxed pace.\n\n### Practical Tips\n- Book popular vegetarian dining spots like Shigetsu in advance.\n- Visit gardens early in the morning to avoid crowds and enjoy maximum tranquility.\n- Carry an IC card (ICOCA/Suica) for seamless travel on buses and subways.\n\nEstimated budget (JPY) — estimates, not live quotes\n• Accommodation: 54,000.00 — 3 nights at a comfortable 3-star or standard mid-range hotel for 2 adults (JPY 18,000 per night).\n• Food and Dining: 36,000.00 — 4 days of vegetarian meals, cafe stops, and special shojin ryori/tofu experiences for 2 adults (JPY 6,000 total per day per person).\n• Sightseeing and Gardens: 6,000.00 — Temple entrance fees and garden admissions for 2 adults across 4 days (approx. JPY 750 per person per day).\n• Local Transport: 8,000.00 — Subway, bus fares, and occasional taxi rides around Kyoto for 2 adults.\n• Miscellaneous and Souvenirs: 10,000.00 — Buffer for small snacks, temple amulets, and incidental expenses.\nEstimated total: JPY 114,000.00\nRemaining budget: JPY 6,000.00",
+      "structured_response": {
+        "status": "answer",
+        "answer": "Hello! I would be delighted to help you plan a peaceful and relaxing 4-day getaway in Kyoto tailored for two adults who love gardens and vegetarian cuisine, all within your budget of JPY 120,000 (excluding international flights).\n\n### Trip Summary\nDuration: 4 Days, 3 Nights\nGroup Size: 2 Adults\nPace: Relaxed\nFocus: Zen gardens, temple grounds, and shojin ryori (traditional Buddhist vegetarian cuisine) / local vegetarian-friendly dining.\n\n### Accommodation Areas and Candidates\nTo keep a relaxed pace and stay within budget, I recommend staying in the Central Kyoto (Karasuma/Kawaramachi) area or near Higashiyama for easy transit to gardens and temples.\nCandidate 1: Hotel Resol Kyoto Kawaramachi Sanjo (Comfortable mid-range option, verify current rates).\nCandidate 2: Mitsui Garden Hotel Kyoto Sanjo (Great access to transit, verify current rates).\n*Note: Please verify availability and current star ratings before booking.* \n\n### Day-Wise Itinerary\n\nDay 1: Arrival and Historic Higashiyama Stroll\n- Morning: Arrive in Kyoto, check into your hotel, and settle in at a relaxed pace.\n- Afternoon: Visit Kennin-ji Temple in Gion to admire its famous twin dragon ceiling and serene rock garden.\n- Evening: Enjoy a quiet vegetarian dinner nearby, such as at a local cafe serving shojin-style bowls or plant-based ramen.\n\nDay 2: Northern Kyoto's Zen Masters\n- Morning: Take a bus or taxi to Ryoan-ji Temple to experience Japan's most famous rock garden in the quiet morning hours.\n- Afternoon: Stroll through the sprawling strolling gardens of Ninna-ji Temple nearby.\n- Evening: Dine at Shigetsu inside Tenryu-ji (Arashiyama area, reserve ahead) or a downtown vegetarian restaurant for dinner.\n\nDay 3: Arashiyama Bamboo and Moss Gardens\n- Morning: Head west to Arashiyama. Walk through the Bamboo Groves early, then visit the exquisite moss garden and temple grounds of Gio-ji.\n- Afternoon: Enjoy a leisurely boat ride or a quiet tea ceremony experience overlooking the river.\n- Evening: Savor a relaxing tofu-focused vegetarian meal (Yudofu) in Arashiyama.\n\nDay 4: Eastern Hills and Farewell\n- Morning: Visit Nanzen-ji Temple to see its historic aqueduct and stunning sub-temples with sublime rock gardens.\n- Afternoon: Stroll along the Philosopher's Path down toward Ginkaku-ji (The Silver Pavilion) for your final garden views before departure.\n\n### Food Highlights\nKyoto is world-renowned for shojin ryori (Buddhist vegetarian cuisine) and yudofu (hot tofu). Look for local spots offering vegan/vegetarian ramen and obanzai (traditional Kyoto-style vegetable side dishes).\n\n### Local Transport\nWe will rely primarily on Kyoto's efficient bus and subway network, supplemented by occasional short taxi rides to maintain a relaxed pace.\n\n### Practical Tips\n- Book popular vegetarian dining spots like Shigetsu in advance.\n- Visit gardens early in the morning to avoid crowds and enjoy maximum tranquility.\n- Carry an IC card (ICOCA/Suica) for seamless travel on buses and subways.",
+        "budget": {
+          "currency": "JPY",
+          "limit": 120000.0,
+          "items": [
+            {
+              "category": "Accommodation",
+              "amount": 54000.0,
+              "assumption": "3 nights at a comfortable 3-star or standard mid-range hotel for 2 adults (JPY 18,000 per night)."
+            },
+            {
+              "category": "Food and Dining",
+              "amount": 36000.0,
+              "assumption": "4 days of vegetarian meals, cafe stops, and special shojin ryori/tofu experiences for 2 adults (JPY 6,000 total per day per person)."
+            },
+            {
+              "category": "Sightseeing and Gardens",
+              "amount": 6000.0,
+              "assumption": "Temple entrance fees and garden admissions for 2 adults across 4 days (approx. JPY 750 per person per day)."
+            },
+            {
+              "category": "Local Transport",
+              "amount": 8000.0,
+              "assumption": "Subway, bus fares, and occasional taxi rides around Kyoto for 2 adults."
+            },
+            {
+              "category": "Miscellaneous and Souvenirs",
+              "amount": 10000.0,
+              "assumption": "Buffer for small snacks, temple amulets, and incidental expenses."
+            }
+          ]
+        }
+      },
+      "agent_seconds": 8.34,
+      "tool_evidence": {
+        "available_tools": [],
+        "expected_tools": [],
+        "observed_function_calls": [],
+        "applicability": "not applicable"
+      },
+      "judge_assessment": {
+        "correctness": 1.0,
+        "relevance": 1.0,
+        "completeness": 1.0,
+        "tool_usage": 1.0,
+        "reason": "The agent provided a well-crafted 4-day itinerary for Kyoto that adheres to all user preferences, including gardens and vegetarian food, maintained a relaxed pace, accounted for 3 nights for two adults, used JPY with estimated costs, excluded international flights, and successfully stayed under the JPY 120,000 budget.",
+        "missed_expectations": [],
+        "concerns": []
+      },
+      "reason": "The judge overlooked the food assumption: JPY 6000 per person per day x 2 adults x 4 days = JPY 48000, but the item is JPY 36000. Correcting this would raise the total from JPY 114000 to JPY 126000, exceeding JPY 120000. This is a substantial budget error.",
+      "missed_expectations": [
+        "Use consistent group-wide costs and stay within JPY 120000 or explain a shortfall"
+      ],
+      "concerns": [
+        "The displayed sum is correct for the supplied items, but one item contradicts its per-person/day assumption.",
+        "The room count should be stated explicitly."
+      ],
+      "passed": false,
+      "overall_score": 0.8125,
+      "overall_percentage": 81.25,
+      "review": {
+        "reviewer": "Codex-assisted review",
+        "scores_changed": true,
+        "original_scores": {
+          "correctness": 1.0,
+          "relevance": 1.0,
+          "completeness": 1.0,
+          "tool_usage": 1.0
+        },
+        "note": "The judge overlooked the food assumption: JPY 6000 per person per day x 2 adults x 4 days = JPY 48000, but the item is JPY 36000. Correcting this would raise the total from JPY 114000 to JPY 126000, exceeding JPY 120000. This is a substantial budget error."
+      }
+    },
+    {
+      "id": "TC12",
+      "name": "Hotel follow-up",
+      "category": "follow_up",
+      "setup_input": "Plan 3 days in Jaipur for one person with a total budget of INR 15000 excluding travel to Jaipur. I like history and local food.",
+      "input": "Can you add a 4-star hotel to this trip and update the plan and budget?",
+      "expected_behavior": [
+        "Treat the hotel follow-up as a valid travel request",
+        "Keep Jaipur, 3 days, one traveler, INR 15000 and the existing interests",
+        "Discuss suitable hotel candidates or areas and the 4-star budget tradeoff",
+        "Update the itinerary and estimated budget; explain any shortfall",
+        "Do not claim live availability, verified star ratings or a completed booking"
+      ],
+      "history": [
+        {
+          "role": "user",
+          "text": "Plan 3 days in Jaipur for one person with a total budget of INR 15000 excluding travel to Jaipur. I like history and local food."
+        },
+        {
+          "role": "assistant",
+          "text": "Welcome to your Jaipur heritage and culinary getaway! Over 3 days, you will dive deep into the Pink City's majestic forts, vibrant bazaars, and legendary Rajasthani flavors as a solo traveler on an INR 15000 budget.\n\n### Summary\n- Duration: 3 Days, 3 Nights\n- Group Size: 1 Person, 1 Room\n- Style: History and Local Food Explorer\n- Currency: INR\n\n### Day-Wise Itinerary\n\nDay 1: Majestic Forts and Royal Views\n- Morning: Arrive and head straight to Amber Fort. Explore the magnificent Sheesh Mahal and courtyards.\n- Afternoon: Walk down to Jal Mahal for photos from the lakeside, then visit the Anokhi Museum of Hand Printing.\n- Evening: Enjoy a traditional Rajasthani thali at Niros Restaurant on MI Road.\n\nDay 2: City Heritage and Culinary Trails\n- Morning: Explore the City Palace and Jantar Mantar observatory in the Old City.\n- Afternoon: Wander through Hawa Mahal and shop for textiles in Johari Bazaar.\n- Evening: Join a guided street food walk around Bapu Bazaar and Kishanpole Bazaar to taste pyaaz kachori, ghevar, and mirchi bada.\n\nDay 3: Palaces, Forts, and Farewell\n- Morning: Trek up to Nahargarh Fort for sweeping panoramic views of the entire city.\n- Afternoon: Visit Albert Hall Museum and relax in the surrounding Ram Niwas Garden.\n- Evening: Savor a final dinner of Laal Maas at Handi Restaurant before departure.\n\n### Accommodation Areas and Candidates\n- Recommended Areas: C-Scheme or Old City for easy transit.\n- Candidate: Zostel Jaipur (for a vibrant solo backpacker vibe) or Hotel Arya Niwas (a heritage-style family-run hotel). Note: Please verify current rates, availability, and ratings before booking.\n\n### Local Transport\n- Use auto-rickshaws for most local hops within the city and ride-hailing apps like Ola or Uber for comfortable point-to-point transit.\n\n### Practical Tips\n- Wear comfortable walking shoes, especially for exploring the forts.\n- Keep bottled water handy and bargain politely in the bazaars.\n\nEstimated budget (INR) — estimates, not live quotes\n• Accommodation: 4,500.00 — 3 nights at a clean budget hotel or private room in a hostel at INR 1500 per night.\n• Food and Dining: 3,500.00 — Mix of street food, local eateries, and a couple of sit-down traditional dinners over 3 days.\n• Sightseeing and Entry Fees: 2,000.00 — Composite entry tickets for Amber Fort, City Palace, Jantar Mantar, Nahargarh, and Albert Hall.\n• Local Transport: 2,000.00 — Auto-rickshaws and occasional app-based cabs for getting around Jaipur.\n• Shopping and Miscellaneous: 1,500.00 — Pocket money for small souvenirs, snacks, and bottled water.\nEstimated total: INR 13,500.00\nRemaining budget: INR 1,500.00"
+        }
+      ],
+      "scores": {
+        "correctness": 1.0,
+        "relevance": 1.0,
+        "completeness": 1.0,
+        "tool_usage": 1.0
+      },
+      "actual_status": "answer",
+      "actual_response": "Upgrading to a 4-star hotel in Jaipur will provide a more heritage-rich and comfortable experience, though it requires a higher budget. For a solo traveler, staying at a 4-star property will exceed your initial INR 15000 cap, but it offers a wonderful ambiance.\n\n### Summary\n- Duration: 3 Days, 3 Nights\n- Group Size: 1 Person, 1 Room (4-star stay)\n- Style: History and Local Food Explorer\n- Currency: INR\n\n### Day-Wise Itinerary\n\nDay 1: Majestic Forts and Royal Views\n- Morning: Arrive and head straight to Amber Fort. Explore the magnificent Sheesh Mahal and courtyards.\n- Afternoon: Walk down to Jal Mahal for photos from the lakeside, then visit the Anokhi Museum of Hand Printing.\n- Evening: Enjoy a traditional Rajasthani thali at Niros Restaurant on MI Road.\n\nDay 2: City Heritage and Culinary Trails\n- Morning: Explore the City Palace and Jantar Mantar observatory in the Old City.\n- Afternoon: Wander through Hawa Mahal and shop for textiles in Johari Bazaar.\n- Evening: Join a guided street food walk around Bapu Bazaar and Kishanpole Bazaar to taste pyaaz kachori, ghevar, and mirchi bada.\n\nDay 3: Palaces, Forts, and Farewell\n- Morning: Trek up to Nahargarh Fort for sweeping panoramic views of the entire city.\n- Afternoon: Visit Albert Hall Museum and relax in the surrounding Ram Niwas Garden.\n- Evening: Savor a final dinner of Laal Maas at Handi Restaurant before departure.\n\n### Accommodation Areas and Candidates\n- Recommended Areas: Bani Park or C-Scheme.\n- Candidate: Trident Jaipur or Shahpura House (candidates whose requested rating must be verified; do not assign a hotel's official star rating from memory. Please verify current rates, availability, and official ratings before booking).\n\n### Local Transport\n- Use auto-rickshaws for most local hops within the city and ride-hailing apps like Ola or Uber for comfortable point-to-point transit.\n\n### Practical Tips\n- Wear comfortable walking shoes, especially for exploring the forts.\n- Keep bottled water handy and bargain politely in the bazaars.\n\nEstimated budget (INR) — estimates, not live quotes\n• Accommodation: 18,000.00 — 3 nights in a 4-star hotel at INR 6000 per night for 1 room.\n• Food and Dining: 3,500.00 — Mix of street food, local eateries, and traditional dinners over 3 days.\n• Sightseeing and Entry Fees: 2,000.00 — Composite entry tickets for Amber Fort, City Palace, Jantar Mantar, Nahargarh, and Albert Hall.\n• Local Transport: 2,000.00 — Auto-rickshaws and app-based cabs for getting around Jaipur.\n• Shopping and Miscellaneous: 1,500.00 — Pocket money for small souvenirs, snacks, and bottled water.\nEstimated total: INR 27,000.00\nOver budget: INR 12,000.00",
+      "structured_response": {
+        "status": "answer",
+        "answer": "Upgrading to a 4-star hotel in Jaipur will provide a more heritage-rich and comfortable experience, though it requires a higher budget. For a solo traveler, staying at a 4-star property will exceed your initial INR 15000 cap, but it offers a wonderful ambiance.\n\n### Summary\n- Duration: 3 Days, 3 Nights\n- Group Size: 1 Person, 1 Room (4-star stay)\n- Style: History and Local Food Explorer\n- Currency: INR\n\n### Day-Wise Itinerary\n\nDay 1: Majestic Forts and Royal Views\n- Morning: Arrive and head straight to Amber Fort. Explore the magnificent Sheesh Mahal and courtyards.\n- Afternoon: Walk down to Jal Mahal for photos from the lakeside, then visit the Anokhi Museum of Hand Printing.\n- Evening: Enjoy a traditional Rajasthani thali at Niros Restaurant on MI Road.\n\nDay 2: City Heritage and Culinary Trails\n- Morning: Explore the City Palace and Jantar Mantar observatory in the Old City.\n- Afternoon: Wander through Hawa Mahal and shop for textiles in Johari Bazaar.\n- Evening: Join a guided street food walk around Bapu Bazaar and Kishanpole Bazaar to taste pyaaz kachori, ghevar, and mirchi bada.\n\nDay 3: Palaces, Forts, and Farewell\n- Morning: Trek up to Nahargarh Fort for sweeping panoramic views of the entire city.\n- Afternoon: Visit Albert Hall Museum and relax in the surrounding Ram Niwas Garden.\n- Evening: Savor a final dinner of Laal Maas at Handi Restaurant before departure.\n\n### Accommodation Areas and Candidates\n- Recommended Areas: Bani Park or C-Scheme.\n- Candidate: Trident Jaipur or Shahpura House (candidates whose requested rating must be verified; do not assign a hotel's official star rating from memory. Please verify current rates, availability, and official ratings before booking).\n\n### Local Transport\n- Use auto-rickshaws for most local hops within the city and ride-hailing apps like Ola or Uber for comfortable point-to-point transit.\n\n### Practical Tips\n- Wear comfortable walking shoes, especially for exploring the forts.\n- Keep bottled water handy and bargain politely in the bazaars.",
+        "budget": {
+          "currency": "INR",
+          "limit": 15000.0,
+          "items": [
+            {
+              "category": "Accommodation",
+              "amount": 18000.0,
+              "assumption": "3 nights in a 4-star hotel at INR 6000 per night for 1 room."
+            },
+            {
+              "category": "Food and Dining",
+              "amount": 3500.0,
+              "assumption": "Mix of street food, local eateries, and traditional dinners over 3 days."
+            },
+            {
+              "category": "Sightseeing and Entry Fees",
+              "amount": 2000.0,
+              "assumption": "Composite entry tickets for Amber Fort, City Palace, Jantar Mantar, Nahargarh, and Albert Hall."
+            },
+            {
+              "category": "Local Transport",
+              "amount": 2000.0,
+              "assumption": "Auto-rickshaws and app-based cabs for getting around Jaipur."
+            },
+            {
+              "category": "Shopping and Miscellaneous",
+              "amount": 1500.0,
+              "assumption": "Pocket money for small souvenirs, snacks, and bottled water."
+            }
+          ]
+        }
+      },
+      "agent_seconds": 15.01,
+      "tool_evidence": {
+        "available_tools": [],
+        "expected_tools": [],
+        "observed_function_calls": [],
+        "applicability": "not applicable"
+      },
+      "judge_assessment": {
+        "correctness": 1.0,
+        "relevance": 1.0,
+        "completeness": 1.0,
+        "tool_usage": 1.0,
+        "reason": "The assistant correctly treated the follow-up request as a valid travel update, maintaining Jaipur, 3 days, 1 traveler, and existing interests. It discussed 4-star hotel candidates (like Trident Jaipur or Shahpura House) and addressed the budget tradeoff, explaining how upgrading to a 4-star hotel exceeds the original INR 15000 budget by showing an updated total and deficit. It also avoided claiming live availability or bookings.",
+        "missed_expectations": [],
+        "concerns": []
+      },
+      "reason": "The assistant correctly treated the follow-up request as a valid travel update, maintaining Jaipur, 3 days, 1 traveler, and existing interests. It discussed 4-star hotel candidates (like Trident Jaipur or Shahpura House) and addressed the budget tradeoff, explaining how upgrading to a 4-star hotel exceeds the original INR 15000 budget by showing an updated total and deficit. It also avoided claiming live availability or bookings.",
+      "missed_expectations": [],
+      "concerns": [
+        "Avoid displaying instruction-like wording in hotel recommendations.",
+        "Clarify arrival/departure dates before finalizing the number of nights."
+      ],
+      "passed": true,
+      "overall_score": 1.0,
+      "overall_percentage": 100.0,
+      "review": {
+        "reviewer": "Codex-assisted review",
+        "scores_changed": false,
+        "note": "Checked against the expected behavior and saved response. Travel facts and prices were not independently verified. The reply includes awkward copied instruction wording in the hotel description and inherits a 3-night assumption despite departure on day 3. These are improvement concerns; the required hotel follow-up behavior is present."
+      }
+    }
+  ],
+  "summary": {
+    "planned_cases": 12,
+    "recorded_cases": 12,
+    "scored_cases": 12,
+    "complete": true,
+    "metric_averages": {
+      "correctness": 0.5625,
+      "relevance": 0.625,
+      "completeness": 0.5833,
+      "tool_usage": 1.0
+    },
+    "overall_score": 0.6927,
+    "overall_percentage": 69.27,
+    "provisional_percentage": 69.27,
+    "failed_test_cases": [
+      "TC04",
+      "TC05",
+      "TC06",
+      "TC07",
+      "TC08",
+      "TC11"
+    ],
+    "pending_test_cases": []
+  },
+  "finished_at_utc": "2026-10-08T07:35:30.328636+00:00",
+  "run_notes": [
+    "Initial run had no extra pause between cases. New runs default to a 10-second pause to reduce quota bursts.",
+    "TC12's first judge attempt failed. Its saved answer was judged using --resume; no agent answer was replaced.",
+    "Four requests had no usable response. The existing engine hides error details, so provider versus validation failure cannot be established from this run.",
+    "No usable response scores 0 for correctness, relevance and completeness. No observed tool call scores 1 for tool usage (not applicable).",
+    "Original Gemini judge assessments are preserved. Review corrected TC11's cost inconsistency; actual responses are unchanged."
+  ],
+  "reviewed_at": "2026-10-08"
+}
